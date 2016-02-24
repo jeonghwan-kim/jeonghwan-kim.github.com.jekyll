@@ -1,0 +1,2040 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>What I Learn</title>
+  <meta name="description" content="#web #backend #angularjs #nodejs #fullstack">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://whatilearn.com/">
+  <link rel="alternate" type="application/rss+xml" title="What I Learn" href="http://whatilearn.com/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">What I Learn</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <!--<div class="trigger">-->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/about/">About</a>-->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/elastic-beanstalk/">#elastic beanstalk</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/nodejs/">#nodejs</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/npm/">#npm</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/aws/">#aws</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/s3/">#s3</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/css/">#css</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/less/">#less</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/twitter-bootstrap/">#twitter bootstrap</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/cookie/">#cookie</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/login/">#login</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/redis/">#redis</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/session/">#session</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/angular-fullstack/">#angular-fullstack</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/angularjs/">#angularjs</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/gzip/">#gzip</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/laze-load/">#laze load</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/pagging/">#pagging</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/log-io/">#log.io</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/express/">#express</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/javascript/">#javascript</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/underscorejs/">#underscorejs</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/form/">#form</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/wordpress/">#wordpress</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/php/">#php</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ssh/">#ssh</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/passport/">#passport</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/eb-cli/">#eb-cli</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/cachefactory/">#$cacheFactory</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/resource/">#$resource</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/cache/">#cache</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/settimeout/">#setTimeout()</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/browser/">#browser</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/file-upload/">#file upload</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/amp/">#&amp;</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/">#</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EB%B9%84%ED%8A%B8%EC%97%B0%EC%82%B0/">#비트연산</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/httpbackend/">#$httpBackend</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/jasmin/">#jasmin</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mock/">#Mock</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/test/">#test</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/hapi/">#hapi</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/controller/">#controller</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/joi/">#joi</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/model/">#model</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/validator/">#validator</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/good/">#good</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/good-console/">#good-console</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/good-file/">#good-file</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/logging/">#logging</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/api/">#api</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/auth/">#auth</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/hapi-auth-cookie/">#hapi-auth-cookie</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/logout/">#logout</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/grunt/">#grunt</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/code/">#code</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/lab/">#lab</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/dao/">#dao</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/node-mysql/">#node-mysql</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/scaffold/">#scaffold</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/rds-snapshot/">#rds snapshot</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/swap-urls/">#swap urls</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%84%9C%EB%B2%84-%EB%B3%80%EA%B2%BD/">#서버 변경</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mongodb/">#mongodb</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/jquery/">#jquery</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/yeopress/">#yeoPress</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/plugin/">#plugin</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/directive/">#directive</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ngform/">#ngForm</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/options/">#options</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/post/">#post</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/preflighted-request/">#preflighted request</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/put/">#put</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/templatecache/">#$templateCache</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/modal/">#modal</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/service/">#service</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/expressjs/">#expressjs</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/nginx/">#nginx</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/child-theme/">#child theme</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/custom-menu/">#custom menu</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/authentication/">#authentication</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ui-router/">#ui-router</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/apache2/">#apache2</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/reverse-proxy/">#reverse proxy</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/virtual-host/">#virtual host</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/exception/">#exception</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/stacktrace-js/">#stacktrace.js</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/express-jwt/">#express-jwt</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/jwt/">#jwt</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/oauth2-0/">#oauth2.0</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/google-material-design/">#google material design</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/materialize/">#materialize</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%9D%B4%EB%8B%88%EC%8B%9C%EC%8A%A4/">#이니시스</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%9D%B4%EB%8B%88%ED%8E%98%EC%9D%B4%EB%AA%A8%EB%B0%94%EC%9D%BC/">#이니페이모바일</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/date/">#date</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/momentjs/">#momentjs</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/hapijs/">#hapijs</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/socket-io/">#socket.io</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/web-socket/">#Web Socket</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%8B%A4%EC%8B%9C%EA%B0%84%EC%9B%B9/">#실시간웹</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mi-band/">#Mi Band</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/google/">#google</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/google-api/">#google api</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/passport-google-oauth/">#passport-google-oauth</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/custom-validator/">#custom validator</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/image-upload/">#image-upload</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/multer/">#multer</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%85%EB%A1%9C%EB%93%9C/">#이미지 업로드</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/gm/">#gm</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/graphicsmagick/">#GraphicsMagick</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/resizing-image/">#resizing image</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/thumb/">#thumb</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%A6%AC%EC%82%AC%EC%9D%B4%EC%A7%95/">#이미지 리사이징</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/forever/">#forever</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/linux-deamon/">#linux deamon</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/linux-service/">#linux service</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/jade/">#jade</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/rest-api/">#rest api</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/grunt-open/">#grunt-open</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/oh-my-zsh/">#oh my zsh</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/terminal/">#terminal</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/zsh/">#zsh</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/postdigest/">#$$postDigest</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/angular/">#angular</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/timeout/">#timeout</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/sequelize/">#sequelize</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/atom/">#atom</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%95%84%ED%86%B0/">#아톰</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/cafe24/">#cafe24</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/sms/">#sms</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EB%AC%B8%EC%9E%90/">#문자</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%B9%B4%ED%8E%9824/">#카페24</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/docker/">#Docker</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/git/">#Git</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/cron/">#cron</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/linux/">#linux</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ntpdate/">#ntpdate</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ubuntu/">#ubuntu</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/agenda/">#agenda</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/node/">#node</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/imac/">#imac</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/macbook/">#macbook</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/tdm/">#tdm</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/node-mocks-http/">#node-mocks-http</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/sinon/">#sinon</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/unit-test/">#unit test</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/github/">#github</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mysql/">#mysql</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/troubleshooting/">#troubleshooting</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/notes/">#notes</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/osx/">#osx</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/slack/">#slack</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/simpletest/">#SimpleTest</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mongo/">#mongo</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/spa/">#spa</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/semver/">#semver</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/karma/">#karma</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/watch/">#watch</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/atom-plugin/">#atom-plugin</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/swagger/">#swagger</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/swagger-spec/">#swagger-spec</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/swagger-ui/">#swagger-ui</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/atom-sync/">#atom-sync</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/kakao-api/">#kakao api</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/oauth/">#oauth</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ghost/">#ghost</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/facebook/">#facebook</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/graph-api/">#graph api</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/django/">#django</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/django-admin/">#django-admin</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/python/">#python</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/gunicorn/">#gunicorn</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/pip/">#pip</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/crontab/">#crontab</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mongodump/">#mongodump</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/swagger-edit/">#swagger-edit</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/swagger-node/">#swagger-node</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/coffee/">#coffee</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/decorator/">#decorator</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/decorator-pattern/">#decorator_pattern</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/angular-directive/">#angular-directive</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/gist/">#gist</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ng-plualize/">#ng-plualize</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ngplualize/">#ngPlualize</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EA%B2%B0%EC%82%B0/">#결산</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/boot2docker/">#boot2docker</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/docker-quickstart-terminal/">#docker_quickstart_terminal</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/kitermatic/">#kitermatic</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mocha/">#mocha</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/tdd/">#tdd</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/fk/">#fk</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/migration/">#migration</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/sequelize-modeling/">#sequelize-modeling</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/lodash/">#lodash</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/morgan/">#morgan</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/seed/">#seed</a>-->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!--</div>-->
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="home">
+
+  <h1 class="page-heading">Posts</h1>
+
+  <ul class="post-list">
+    
+      <li>
+        <span class="post-meta">
+          Feb 20, 2016
+        </span>
+
+        <h2>
+          <a class="post-link" href="/2016/02/20/beanstalk-in-seoul.html">서울에서 Elastic Beanstalk 사용하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Feb 7, 2016
+        </span>
+
+        <h2>
+          <a class="post-link" href="/2016/02/07/jekyll-customizing.html">Jekyll 커스터마이징 1 - 코멘트와 페이지네이션</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Feb 7, 2016
+        </span>
+
+        <h2>
+          <a class="post-link" href="/2016/02/07/from-wordpress-to-jekyll.html">워드프레스에서 지킬로 블로그 이동</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Feb 3, 2016
+        </span>
+
+        <h2>
+          <a class="post-link" href="/sequelize-seed-%ec%8b%9c%eb%93%9c-%eb%8d%b0%ec%9d%b4%ed%84%b0-%ea%b4%80%eb%a6%ac%ed%95%98%ea%b8%b0/">Sequelize Seed &#8211; 시드 데이터 관리하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Feb 1, 2016
+        </span>
+
+        <h2>
+          <a class="post-link" href="/morgan-helper/">morgan-helper</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 31, 2016
+        </span>
+
+        <h2>
+          <a class="post-link" href="/lodash/">lodash</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 31, 2016
+        </span>
+
+        <h2>
+          <a class="post-link" href="/aws-%ec%84%9c%ec%9a%b8-%eb%a6%ac%ec%a0%84%ec%9c%bc%eb%a1%9c-%eb%b8%94%eb%a1%9c%ea%b7%b8-%ec%9d%b4%eb%8f%99/">AWS 서울 리전으로 블로그 이동</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 27, 2016
+        </span>
+
+        <h2>
+          <a class="post-link" href="/sequelize-model/">Sequelize Modeling</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 14, 2016
+        </span>
+
+        <h2>
+          <a class="post-link" href="/sequelize-migration/">Sequelize 마이그레이션</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 13, 2016
+        </span>
+
+        <h2>
+          <a class="post-link" href="/add-fk-on-sequelize-migration/">Sequelize로 마이그레이션 시 외래키 추가하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 12, 2016
+        </span>
+
+        <h2>
+          <a class="post-link" href="/naming-uploaded-file-on-wordpress/">워드프레스 파일 업로드 시 파일명 처리</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 5, 2016
+        </span>
+
+        <h2>
+          <a class="post-link" href="/mocha/">NodeJS에서 가장 많이 사용하는 테스트 프레임웍, Mocha</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 4, 2016
+        </span>
+
+        <h2>
+          <a class="post-link" href="/boot2docker-%ec%97%85%eb%8d%b0%ec%9d%b4%ed%8a%b8-v1-9/">boot2docker 업데이트 (v1.9)</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 2, 2016
+        </span>
+
+        <h2>
+          <a class="post-link" href="/2015-%eb%b8%94%eb%a1%9c%ea%b7%b8-%ea%b2%b0%ec%82%b0/">2015 블로그 결산</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Dec 21, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/ng-plualize-%eb%8b%a8%ec%88%98-%eb%b3%b5%ec%88%98%ed%98%95-%ec%b2%98%eb%a6%ac/">ng-plualize 단수, 복수형 처리</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Dec 13, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/javascript-decorator-pattern/">Javascript Decorator Pattern</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Dec 11, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/swagger-node/">Swagger-node로 express 시작하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Dec 8, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/mongodump-is-not-working-on-cronjob/">mongodump 크론잡이 동작하지 않을 때</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Dec 4, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ec%9a%b0%eb%b6%84%ed%88%ac%ec%97%90-django-admin-mysql-python-%ec%84%a4%ec%b9%98/">우분투에 Django-admin, mysql-python 설치</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Dec 4, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/gunicorn-%ec%9e%a5%ea%b3%a0-%ec%96%b4%eb%93%9c%eb%af%bc-%ed%94%84%eb%a1%9c%eb%8d%95%ec%85%98-%ec%84%9c%eb%b2%84%ec%97%90-%ea%b5%ac%eb%8f%99%ed%95%98%ea%b8%b0/">gunicorn: 장고 어드민 프로덕션 서버에 구동하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Dec 3, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ea%b8%b0%ec%a1%b4-mysql%ec%97%90-%ec%9e%a5%ea%b3%a0-%ec%96%b4%eb%93%9c%eb%af%bc-%eb%b6%99%ec%9d%b4%ea%b8%b0/">기존 데이터베이스에 장고 어드민 통합하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Dec 2, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ed%8e%98%ec%9d%b4%ec%8a%a4%eb%b6%81-%ed%86%a0%ed%81%b0-%ea%b6%8c%ed%95%9c-%ed%99%95%ec%9d%b8-%ec%a3%bc%ec%86%8c/">페이스북 토큰 권한 확인 주소</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Dec 1, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/ghost-%eb%9d%bc%ec%9a%b0%ed%8c%85-%eb%a1%9c%ec%a7%81-%eb%b6%84%ec%84%9d/">Ghost 라우팅 로직 분석</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Nov 29, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ec%b9%b4%ec%b9%b4%ec%98%a4-%ec%9d%b8%ec%a6%9d-%ed%85%8c%ec%8a%a4%ed%8a%b8/">카카오 인증 테스트</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Nov 26, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/atom-%ed%94%8c%eb%9f%ac%ea%b7%b8%ec%9d%b8-atom-sync/">Atom 플러그인: atom-sync</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Nov 25, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ea%b8%b0%ec%a1%b4-%ed%94%84%eb%a1%9c%ec%a0%9d%ed%8a%b8%ec%99%80-swagger-ui-%ec%97%b0%eb%8f%99%ed%95%98%ea%b8%b0/">기존 프로젝트와 Swagger-ui 연동하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Nov 12, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/atom-%ec%97%90%eb%94%94%ed%84%b0-%ed%94%8c%eb%9f%ac%ea%b7%b8%ec%9d%b8-%ec%a0%95%eb%a6%ac/">Atom 에디터 플러그인 정리</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Nov 12, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/karma%ec%97%90-%eb%a6%ac%ed%8f%ac%ed%84%b0-%ec%b6%94%ea%b0%80%ed%95%98%ea%b8%b0/">karma에 리포터 추가하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Nov 4, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/karma%ec%99%80-watch%eb%a1%9c-%ec%9c%a0%eb%8b%9b%ed%85%8c%ec%8a%a4%ed%8a%b8-%ec%bd%94%eb%93%9c-%ea%b0%9c%eb%b0%9c%ed%95%98%ea%b8%b0/">karma와 watch로 유닛테스트 코드 개발하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Oct 30, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ec%84%9c%eb%b2%84-%ea%b5%ac%eb%8f%99%ec%8b%9c-%eb%b2%84%ec%a0%84-%ec%b2%b4%ed%81%ac/">서버 구동시 버전 체크</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Oct 27, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ec%95%b5%ea%b7%a4%eb%9f%ac%eb%a1%9c-%eb%a7%8c%eb%93%a0-spa-%ed%94%84%eb%a1%9c%ea%b7%b8%eb%9e%a8%ec%9d%84-%ec%95%84%eb%a7%88%ec%a1%b4%ec%9b%b9%ec%84%9c%eb%b9%84%ec%8a%a4-s3%ec%97%90%ec%84%9c-%ec%9b%b9/">앵귤러로 만든 spa 프로그램을 아마존웹서비스 s3에서 웹호스팅 하는 방법</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Oct 17, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%eb%8f%84%ec%bb%a4%ec%97%90%ec%84%9c-%eb%aa%bd%ea%b3%a0%eb%94%94%eb%b9%84-%ec%bb%a8%ed%85%8c%ec%9d%b4%eb%84%88-%ec%82%ac%ec%9a%a9%ed%95%98%ea%b8%b0/">도커에서 몽고디비 컨테이너 사용하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Oct 14, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/simpletest-php-unit-test/">SimpleTest &#8211; php unit test</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Oct 2, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/git-push-%ec%9d%b4%eb%b2%a4%ed%8a%b8%eb%a5%bc-slack-%ec%b1%84%eb%84%90%eb%a1%9c-%eb%b3%b4%eb%82%b4%ea%b8%b0/">git push 이벤트를 slack 채널로 보내기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Sep 28, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/osx-%eb%85%b8%ed%8a%b8-%ea%b8%80%ea%bc%b4-%eb%b3%80%ea%b2%bd/">osx 노트 글꼴 변경</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Sep 27, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/mysql-%eb%8d%b0%ec%9d%b4%ed%84%b0%eb%b2%a0%ec%9d%b4%ec%8a%a4-%ec%82%ad%ec%a0%9c-%ec%97%90%eb%9f%ac/">mysql 데이터베이스 삭제 에러</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Sep 23, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ec%9b%90%ea%b2%a9%eb%a1%9c%ea%b7%b8%ec%9d%b8ssh-%ec%a0%91%ec%86%8d/">원격로그인(SSH) 접속</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Sep 19, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/docker-usage/">도커 활용기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Sep 19, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/forever-and-docker/">Forever와 Docker</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Sep 15, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ec%9d%b5%ec%8a%a4%ed%94%84%eb%a0%88%ec%8a%a4-api-%ec%84%9c%eb%b2%84-%ed%85%8c%ec%8a%a4%ed%8a%b8-%ec%bd%94%eb%93%9c-%ec%9e%91%ec%84%b1%ed%95%98%ea%b8%b0/">익스프레스 API 서버 테스트 코드 작성하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Sep 12, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ec%95%88%ec%93%b0%eb%8a%94-imac%ec%9d%84-%eb%a7%a5%eb%b6%81-%ec%99%b8%ec%9e%a5-%eb%aa%a8%eb%8b%88%ed%84%b0%eb%a1%9c-%ec%82%ac%ec%9a%a9%ed%95%98%ec%9e%90/">안쓰는 iMac을 맥북 외장 모니터로 사용하자!</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Sep 11, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/agenda/">Agenda</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Sep 9, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ea%b9%83git-%ec%84%9c%eb%b2%84-%eb%a7%8c%eb%93%a4%ea%b8%b0/">깃(git) 서버 만들기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Sep 9, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ed%81%ac%eb%a1%a0%ec%9d%84-%ec%82%ac%ec%9a%a9%ed%95%a0%eb%95%8c-%ec%84%9c%eb%b2%84-%ec%8b%9c%ea%b0%84%ec%9d%84-%ec%a0%95%ed%99%95%ed%9e%88-%eb%a7%9e%ec%b6%94%ec%9e%90/">크론을 사용할때 서버 시간을 정확히 맞추자</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Sep 7, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/docker-git/">Docker + Git</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Sep 2, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ea%b0%9c%eb%b0%9c-%ec%a0%88%ec%b0%a8%ec%97%90-%eb%8f%84%ec%bb%a4-%ec%a0%81%ec%9a%a9%ed%95%98%ea%b8%b0/">개발 절차에 도커 적용하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Aug 31, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ec%b9%b4%ed%8e%9824-sms-node-%eb%aa%a8%eb%93%88/">카페24 SMS node 모듈</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Aug 30, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ec%95%84%ed%86%b0-%ec%97%90%eb%94%94%ed%84%b0-%ec%99%b8%eb%aa%a8-%eb%b3%80%ea%b2%bd%ed%95%98%ea%b8%b0/">아톰 에디터 외모 변경하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Aug 22, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/sequalize-%ec%bf%bc%eb%a6%ac/">sequalize 쿼리</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Aug 14, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/resource%eb%a1%9c-rest-api-%ec%82%ac%ec%9a%a9%ed%95%98%ea%b8%b0/">$resource로 REST api 사용하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Aug 12, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/postdigest%ec%99%80-timeout/">$$postDigest()와 $timeout()</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Aug 10, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/oh-my-zsh%eb%a1%9c-%ed%84%b0%eb%af%b8%eb%84%90-%ea%be%b8%eb%af%b8%ea%b8%b0/">Oh My Zsh로 터미널 꾸미기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Aug 10, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/grunt-open/">grunt open</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Aug 5, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/express-js-3-%ed%85%9c%ed%94%8c%eb%a6%bfjade/">Express.js - 3. 템플릿(Jade)</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Aug 3, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/express-js-2-%eb%9d%bc%ec%9a%b0%ed%8c%85/">Express.js - 2. 라우팅</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jul 31, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/express-js-1-%ec%84%a4%ec%b9%98%ec%99%80-%ea%b5%ac%ec%a1%b0/">Express.js - 1. 설치와 구조</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jul 30, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%eb%a6%ac%eb%88%85%ec%8a%a4-%eb%8d%b0%eb%aa%ac%ec%9c%bc%eb%a1%9c-%eb%85%b8%eb%93%9c-%ec%96%b4%ed%94%8c%eb%a6%ac%ec%bc%80%ec%9d%b4%ec%85%98-%ea%b4%80%eb%a6%ac%ed%95%98%ea%b8%b0/">리눅스 데몬으로 노드 어플리케이션 관리하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jul 28, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ec%9d%b4%eb%af%b8%ec%a7%80-%ec%97%85%eb%a1%9c%eb%93%9c-2-gm-%eb%aa%a8%eb%93%88%eb%a1%9c-%ec%9d%b4%eb%af%b8%ec%a7%80-%eb%a6%ac%ec%82%ac%ec%9d%b4%ec%a7%95/">이미지 업로드 – 2. gm 모듈로 이미지 리사이징</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jul 28, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ec%9d%b4%eb%af%b8%ec%a7%80-%ec%97%85%eb%a1%9c%eb%93%9c-1-multer-%eb%aa%a8%eb%93%88%eb%a1%9c-%ed%8c%8c%ec%9d%bc-%ec%97%85%eb%a1%9c%eb%93%9c/">이미지 업로드 - 1. multer 모듈로 파일 업로드</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jul 27, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/dusk-theme-in-webstorm/">웹스톰 Dusk 테마</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jul 25, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/ngform-%ec%82%ac%ec%9a%a9%ec%9e%90-%ec%a0%95%ec%9d%98-%eb%b0%b8%eb%a6%ac%eb%8d%b0%ec%9d%b4%ed%84%b0-%eb%a7%8c%eb%93%a4%ea%b8%b0/">ngForm 사용자 정의 밸리데이터 만들기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jul 24, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/ngform-%eb%b0%b8%eb%a6%ac%eb%8d%b0%ec%9d%b4%ed%84%b0-%ed%99%9c%ec%9a%a9/">ngForm 밸리데이터 활용</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jul 24, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/passport-google-oauth-%ea%b5%ac%ea%b8%80-%ec%9d%b8%ec%a6%9d-%eb%aa%a8%eb%93%88/">passport-google-oauth 구글 인증 모듈</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jul 22, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/ngform-%ed%81%b4%eb%9e%98%ec%8a%a4%eb%aa%85-%ed%99%9c%ec%9a%a9%ed%95%98%ea%b8%b0/">ngForm 클래스명 활용하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jul 20, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/mi-band-moves-rocket-pocket/">Mi Band, Moves, Rocket Pocket</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jul 8, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/socket-io%eb%a5%bc-%ec%9d%b4%ec%9a%a9%ed%95%9c-%ec%8b%a4%ec%8b%9c%ea%b0%84-%ec%9b%b9-%ea%b5%ac%ed%98%84/">Socket.io를 이용한 실시간 웹 구현</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jun 26, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ec%9d%b4%eb%8b%88%ed%8e%98%ec%9d%b4-%eb%aa%a8%eb%b0%94%ec%9d%bc-%ea%b2%b0%ec%a0%9c-%ea%b3%84%ec%a2%8c%ec%9d%b4%ec%b2%b4-%ea%b0%9c%eb%b0%9c-%ed%9b%84%ea%b8%b0/">이니페이 모바일 결제 (계좌이체) 개발 후기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jun 19, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/momentjs/">momentjs</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jun 18, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ec%9d%b4%eb%8b%88%ed%8e%98%ec%9d%b4-%eb%aa%a8%eb%b0%94%ec%9d%bc-%ea%b2%b0%ec%a0%9c-%ec%8b%a0%ec%9a%a9%ec%b9%b4%eb%93%9c-%ea%b0%9c%eb%b0%9c-%ed%9b%84%ea%b8%b0/">이니페이 모바일 결제 (신용카드) 개발 후기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jun 14, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/google-material-design/">Google Material Design</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jun 11, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/oauth2-0-in-rest-api/">REST api에 OAuth2.0 구현</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          May 6, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/server-side-loggin-in-angular/">프론트에서 잡지 못한 예외를 서버에 리포팅하는 방법</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Apr 10, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/how-to-run-nodejs-and-php-by-using-nginx/">nginx를 이용하여 nodejs와 php 어플리케이션 함께 구동하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Apr 2, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/ui-route%eb%a1%9c-%eb%9d%bc%ec%9a%b0%ed%8c%85-%ec%9d%b8%ec%a6%9d-%ea%b5%ac%ed%98%84/">ui-route로 라우팅 인증 구현</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Mar 28, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/custom-menu-in-wordpress/">워드프레스 커스텀 메뉴 추가하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Mar 28, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/how-to-build-wordpress-child-theme/">워드프레스 자식 테마 만들기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Mar 28, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/fileupload-in-expressjs/">익스프레스 파일 업로드</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Mar 24, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ec%95%b5%ea%b7%a4%eb%9f%ac-%ec%84%9c%eb%b9%84%ec%8a%a4%ec%97%90-%ed%85%9c%ed%94%8c%eb%a6%bf-%eb%a1%9c%eb%94%a9/">앵귤러 서비스에 템플릿 로딩</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Mar 20, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/options-%eb%a9%94%ec%8f%98%eb%93%9c%ec%97%90-%eb%8c%80%ed%95%b4/">options 메쏘드에 대해</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Mar 19, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ec%95%b5%ea%b7%a4%eb%9f%ac-%eb%94%94%eb%a0%89%ed%8b%b0%eb%b8%8c-%eb%93%b1/">앵귤러 디렉티브 등</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Mar 13, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/plugins-in-wordpress/">워드프레스 플러그인 정리</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Mar 11, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/wordpress-and-jquery/">워드프레스와 제이쿼리 등</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Mar 10, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%eb%aa%bd%ea%b3%a0db-%ec%9d%b8%eb%8d%b1%ec%8a%a4-%ec%99%b8/">몽고DB 인덱스 외</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Mar 6, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ec%84%9c%eb%b2%84-%eb%8b%a4%ec%9a%b4%ed%83%80%ec%9e%84-%ec%97%86%ec%9d%b4-%eb%b9%88%ec%8a%a4%ed%86%a1-%ea%b0%88%ec%95%84%ed%83%80%ea%b8%b0/">서버 다운타임 없이 빈스톡 갈아타기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Feb 22, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/hapi-api-server-scaffold/">Hapi Api 서버 스캐폴드</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Feb 20, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/hapi-test/">Hapi 테스트 코드</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Feb 19, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/wordpress-and-grunt/">워드프레스에 Grunt 설정하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Feb 19, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/hapi-%ec%9d%b8%ec%a6%9d/">Hapi 인증</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Feb 16, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/hapi-logging-good/">Hapi 로깅, Good</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Feb 15, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/hapijs-joi/">Hapi 파라매터 검증, Joi</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Feb 15, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/start-with-hapi/">Hapi 시작하기</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Feb 10, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/http-%ed%85%8c%ec%8a%a4%ed%8a%b8-%ec%bd%94%eb%93%9c-%ec%9e%91%ec%84%b1/">$http 테스트 코드 작성</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Feb 8, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/bit-operation/">비트 연산</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 25, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%eb%b8%8c%eb%9d%bc%ec%9a%b0%ec%a0%b8%ec%97%90%ec%84%9c-%ec%95%84%eb%a7%88%ec%a1%b4-s3-%ed%8c%8c%ec%9d%bc-%ec%97%85%eb%a1%9c%eb%93%9c/">브라우져에서 아마존 S3 파일 업로드</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 22, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/resource%ec%99%80-service/">$resource와 service</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 22, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ea%bc%ac%eb%a6%ac%ec%97%90-%ea%bc%ac%eb%a6%ac%eb%a5%bc-%eb%ac%b4%eb%8a%94-timeout/">꼬리에 꼬리를 무는 setTimeout()</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 19, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/resource-%ec%ba%90%ec%89%ac-%ec%84%a4%ec%a0%95/">$resource 캐쉬 설정</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 17, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/eb-cli-%ed%88%b4-%ec%82%ac%ec%9a%a9%eb%b2%95-%ec%a0%95%eb%a6%ac/">eb-cli 툴 사용법 정리</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 17, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/angularjs-passport%eb%a1%9c-%ec%9d%b8%ec%a6%9d%ea%b5%ac%ed%98%84/">AngularJS, Passport로 인증구현</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 10, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ec%9b%8c%eb%93%9c%ed%94%84%eb%a0%88%ec%8a%a4-ssh2-%ec%84%a4%ec%a0%95/">워드프레스 SSH2 설정</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 10, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/wordpress-study-01-misfit-kr/">WordPress study 01 &#8211; misfit.kr</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 10, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/angular-form/">Angular Form</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jan 6, 2015
+        </span>
+
+        <h2>
+          <a class="post-link" href="/underscore-js/">underscore.js</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Aug 22, 2014
+        </span>
+
+        <h2>
+          <a class="post-link" href="/expressjs-4-0-%eb%a7%88%ec%9d%b4%ea%b7%b8%eb%a0%88%ec%9d%b4%ec%85%98/">expressjs 4.0 마이그레이션</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Aug 15, 2014
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%eb%85%b8%eb%93%9c-%ec%8b%a4%ed%96%89%eb%aa%a8%eb%93%9c%ec%97%90-%eb%94%b0%eb%a5%b8-%ed%99%98%ea%b2%bd%ec%84%a4%ec%a0%95/">노드 실행모드에 따른 환경설정</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Aug 8, 2014
+        </span>
+
+        <h2>
+          <a class="post-link" href="/log-io%eb%a5%bc-%ec%9d%b4%ec%9a%a9%ed%95%9c-beanstalk-%eb%a1%9c%ea%b7%b8-%eb%aa%a8%eb%8b%88%ed%84%b0%eb%a7%81/">log.io를 이용한 beanstalk 로그 모니터링</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Aug 2, 2014
+        </span>
+
+        <h2>
+          <a class="post-link" href="/angular-fullstack-%eb%a1%9c%eb%94%a9-%ec%86%8d%eb%8f%84-%ea%b0%9c%ec%84%a0/">Angular-fullstack 로딩 속도 개선</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jul 31, 2014
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%eb%85%b8%eb%93%9c%ec%97%90%ec%84%9c-%ec%84%b8%ec%85%98%ec%9d%84-%ec%9d%b4%ec%9a%a9%ed%95%9c-%eb%a1%9c%ea%b7%b8%ec%9d%b8%ec%95%84%ec%9b%83-%ea%b5%ac%ed%98%84/">노드에서 세션을 이용한 로그인/아웃 구현</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jul 26, 2014
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ed%8a%b8%ec%9c%84%ed%84%b0-%eb%b6%80%ed%8a%b8%ec%8a%a4%ed%8a%b8%eb%9e%a9-%ec%86%8c%ec%8a%a4%eb%b6%84%ec%84%9d/">트위터 부트스트랩 소스분석</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jul 23, 2014
+        </span>
+
+        <h2>
+          <a class="post-link" href="/%ec%95%84%eb%a7%88%ec%a1%b4-s3%eb%a5%bc-%ec%9d%b4%ec%9a%a9%ed%95%9c-%ec%9d%b4%eb%af%b8%ec%a7%80-%ec%97%85%eb%a1%9c%eb%93%9c-%ec%84%9c%eb%b2%84-%ea%b5%ac%ec%b6%95/">아마존 S3를 이용한 이미지 업로드 서버 구축</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jul 12, 2014
+        </span>
+
+        <h2>
+          <a class="post-link" href="/elastic-beanstalk/">Elastic Beanstalk</a>
+        </h2>
+      </li>
+    
+      <li>
+        <span class="post-meta">
+          Jul 12, 2014
+        </span>
+
+        <h2>
+          <a class="post-link" href="/elastic-beanstalk/">Elastic Beanstalk</a>
+        </h2>
+      </li>
+    
+  </ul>
+
+  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">What I Learn</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>What I Learn</li>
+          <li><a href="mailto:ej88ej@gmail.com">ej88ej@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jeonghwan-kim"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jeonghwan-kim</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/JeonghwanKim4"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">JeonghwanKim4</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>#web #backend #angularjs #nodejs #fullstack</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

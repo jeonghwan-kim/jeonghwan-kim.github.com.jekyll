@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Hapi 테스트 코드</title>
+  <meta name="description" content="프론트도 마찬가지지만 백엔드 서버를 개발할수록 테스트가 중요성을 실감한다. 서비스는 서버 혼자서 동작하는 것이 아니라 모바일, 웹 브라우져 등의 클라이언트와 함께 동작해야 하기 때문에 다양한 시나리오에 대응할 수 있어야 한다. 또한 한 번 발생한 버그는 재발하지 않는다는 것을 보장...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://whatilearn.com/hapi-test/">
+  <link rel="alternate" type="application/rss+xml" title="What I Learn" href="http://whatilearn.com/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">What I Learn</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <!--<div class="trigger">-->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/about/">About</a>-->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/elastic-beanstalk/">#elastic beanstalk</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/nodejs/">#nodejs</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/npm/">#npm</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/aws/">#aws</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/s3/">#s3</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/css/">#css</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/less/">#less</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/twitter-bootstrap/">#twitter bootstrap</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/cookie/">#cookie</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/login/">#login</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/redis/">#redis</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/session/">#session</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/angular-fullstack/">#angular-fullstack</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/angularjs/">#angularjs</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/gzip/">#gzip</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/laze-load/">#laze load</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/pagging/">#pagging</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/log-io/">#log.io</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/express/">#express</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/javascript/">#javascript</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/underscorejs/">#underscorejs</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/form/">#form</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/wordpress/">#wordpress</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/php/">#php</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ssh/">#ssh</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/passport/">#passport</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/eb-cli/">#eb-cli</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/cachefactory/">#$cacheFactory</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/resource/">#$resource</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/cache/">#cache</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/settimeout/">#setTimeout()</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/browser/">#browser</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/file-upload/">#file upload</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/amp/">#&amp;</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/">#</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EB%B9%84%ED%8A%B8%EC%97%B0%EC%82%B0/">#비트연산</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/httpbackend/">#$httpBackend</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/jasmin/">#jasmin</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mock/">#Mock</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/test/">#test</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/hapi/">#hapi</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/controller/">#controller</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/joi/">#joi</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/model/">#model</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/validator/">#validator</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/good/">#good</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/good-console/">#good-console</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/good-file/">#good-file</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/logging/">#logging</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/api/">#api</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/auth/">#auth</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/hapi-auth-cookie/">#hapi-auth-cookie</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/logout/">#logout</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/grunt/">#grunt</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/code/">#code</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/lab/">#lab</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/dao/">#dao</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/node-mysql/">#node-mysql</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/scaffold/">#scaffold</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/rds-snapshot/">#rds snapshot</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/swap-urls/">#swap urls</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%84%9C%EB%B2%84-%EB%B3%80%EA%B2%BD/">#서버 변경</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mongodb/">#mongodb</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/jquery/">#jquery</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/yeopress/">#yeoPress</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/plugin/">#plugin</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/directive/">#directive</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ngform/">#ngForm</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/options/">#options</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/post/">#post</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/preflighted-request/">#preflighted request</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/put/">#put</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/templatecache/">#$templateCache</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/modal/">#modal</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/service/">#service</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/expressjs/">#expressjs</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/nginx/">#nginx</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/child-theme/">#child theme</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/custom-menu/">#custom menu</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/authentication/">#authentication</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ui-router/">#ui-router</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/apache2/">#apache2</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/reverse-proxy/">#reverse proxy</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/virtual-host/">#virtual host</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/exception/">#exception</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/stacktrace-js/">#stacktrace.js</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/express-jwt/">#express-jwt</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/jwt/">#jwt</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/oauth2-0/">#oauth2.0</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/google-material-design/">#google material design</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/materialize/">#materialize</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%9D%B4%EB%8B%88%EC%8B%9C%EC%8A%A4/">#이니시스</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%9D%B4%EB%8B%88%ED%8E%98%EC%9D%B4%EB%AA%A8%EB%B0%94%EC%9D%BC/">#이니페이모바일</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/date/">#date</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/momentjs/">#momentjs</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/hapijs/">#hapijs</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/socket-io/">#socket.io</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/web-socket/">#Web Socket</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%8B%A4%EC%8B%9C%EA%B0%84%EC%9B%B9/">#실시간웹</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mi-band/">#Mi Band</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/google/">#google</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/google-api/">#google api</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/passport-google-oauth/">#passport-google-oauth</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/custom-validator/">#custom validator</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/image-upload/">#image-upload</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/multer/">#multer</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%85%EB%A1%9C%EB%93%9C/">#이미지 업로드</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/gm/">#gm</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/graphicsmagick/">#GraphicsMagick</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/resizing-image/">#resizing image</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/thumb/">#thumb</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%A6%AC%EC%82%AC%EC%9D%B4%EC%A7%95/">#이미지 리사이징</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/forever/">#forever</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/linux-deamon/">#linux deamon</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/linux-service/">#linux service</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/jade/">#jade</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/rest-api/">#rest api</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/grunt-open/">#grunt-open</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/oh-my-zsh/">#oh my zsh</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/terminal/">#terminal</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/zsh/">#zsh</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/postdigest/">#$$postDigest</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/angular/">#angular</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/timeout/">#timeout</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/sequelize/">#sequelize</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/atom/">#atom</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%95%84%ED%86%B0/">#아톰</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/cafe24/">#cafe24</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/sms/">#sms</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EB%AC%B8%EC%9E%90/">#문자</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%B9%B4%ED%8E%9824/">#카페24</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/docker/">#Docker</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/git/">#Git</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/cron/">#cron</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/linux/">#linux</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ntpdate/">#ntpdate</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ubuntu/">#ubuntu</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/agenda/">#agenda</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/node/">#node</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/imac/">#imac</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/macbook/">#macbook</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/tdm/">#tdm</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/node-mocks-http/">#node-mocks-http</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/sinon/">#sinon</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/unit-test/">#unit test</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/github/">#github</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mysql/">#mysql</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/troubleshooting/">#troubleshooting</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/notes/">#notes</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/osx/">#osx</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/slack/">#slack</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/simpletest/">#SimpleTest</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mongo/">#mongo</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/spa/">#spa</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/semver/">#semver</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/karma/">#karma</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/watch/">#watch</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/atom-plugin/">#atom-plugin</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/swagger/">#swagger</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/swagger-spec/">#swagger-spec</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/swagger-ui/">#swagger-ui</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/atom-sync/">#atom-sync</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/kakao-api/">#kakao api</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/oauth/">#oauth</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ghost/">#ghost</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/facebook/">#facebook</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/graph-api/">#graph api</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/django/">#django</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/django-admin/">#django-admin</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/python/">#python</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/gunicorn/">#gunicorn</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/pip/">#pip</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/crontab/">#crontab</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mongodump/">#mongodump</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/swagger-edit/">#swagger-edit</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/swagger-node/">#swagger-node</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/coffee/">#coffee</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/decorator/">#decorator</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/decorator-pattern/">#decorator_pattern</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/angular-directive/">#angular-directive</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/gist/">#gist</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ng-plualize/">#ng-plualize</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ngplualize/">#ngPlualize</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EA%B2%B0%EC%82%B0/">#결산</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/boot2docker/">#boot2docker</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/docker-quickstart-terminal/">#docker_quickstart_terminal</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/kitermatic/">#kitermatic</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mocha/">#mocha</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/tdd/">#tdd</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/fk/">#fk</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/migration/">#migration</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/sequelize-modeling/">#sequelize-modeling</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/lodash/">#lodash</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/morgan/">#morgan</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/seed/">#seed</a>-->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!--</div>-->
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Hapi 테스트 코드</h1>
+    <p class="post-meta">
+      <time datetime="2015-02-20T02:50:23+08:00"
+            itemprop="datePublished">Feb 20, 2015</time>
+      <ul class="tags">
+  
+  <li class="tag"><a class="tag-link" href="/tags/code">code</a></li>
+  
+  <li class="tag"><a class="tag-link" href="/tags/grunt">grunt</a></li>
+  
+  <li class="tag"><a class="tag-link" href="/tags/hapi">hapi</a></li>
+  
+  <li class="tag"><a class="tag-link" href="/tags/lab">lab</a></li>
+  
+  <li class="tag"><a class="tag-link" href="/tags/test">test</a></li>
+  
+</ul>
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>프론트도 마찬가지지만 백엔드 서버를 개발할수록 테스트가 중요성을 실감한다. 서비스는 서버 혼자서 동작하는 것이 아니라 모바일, 웹 브라우져 등의 클라이언트와 함께 동작해야 하기 때문에 다양한 시나리오에 대응할 수 있어야 한다. 또한 한 번 발생한 버그는 재발하지 않는다는 것을 보장해야 마음 놓고 코드를 수정할 수 있다. 때문에 테스트 뿐만 아니라 테스트 규모가 커짐에 따라 이에 대한 테스트 자동화에 대해서도 고민하지 않을 수 없다.</p>
+
+<p>이번 글은 Hapi를 이용한 Api 서버 개발시 테스트 자동화가 그 주제다. Hapi에서 제공하는 유닛테스트 모듈인 <a href="https://github.com/hapijs/lab">Lab</a>과 검증모듈 <a href="https://github.com/hapijs/code#array">Code</a>, 이를 활용한 REST Api 단에서의 테스트 코드 작성법, 그리고 테스트 결과의 문서화까지의 테스트 과정에 대해 보자.</p>
+<h2>라우팅 테스트</h2>
+<p>유닛 테스트라고 하면 클래스, 함수 단위 등 하나의 코드 덩어리를 테스트하는 것을 말한다. Api 서버에서도 클래스와 함수가 있기 때문에 그러한 모듈단위의 유닛테스트가 가능하다. 그러나 본 글에서는 유닛테스트가 아닌 프로토콜 단위의 테스트 코드를 다룬다. API 서버의 궁극적인 목적은 프로토콜을 호출했을 때 예상되는 결과로 응답하는 것이기 때문에 이러한 프로토콜 단위의 테스트가 중요하다고 생각한다.</p>
+
+<p>지금까지 작성한 코드의 폴더구조를 살펴보자. 라우팅 단위로 폴더를 작성하고, 각 폴더에는 index.js *.ctrl.js, *.valid.js가 각각 존재한다. 테스트를 위해 <code>*.spec.js</code> 파일을 추가하자. 다시 한 번 각 파일의 역할을 설명하면 아래와 같다.</p>
+<ul>
+	<li>index.js: 라우팅 설정</li>
+	<li>*.ctrl.js: 로직 구현</li>
+	<li>*.valid.js: 파라매터 검증</li>
+	<li><strong>`*.spec.js`: 테스트 코드</strong></li>
+</ul>
+<p>이전 포스트에서 구현한 /user 프로토콜에 대한 테스트 코드를 구현해 보자.</p>
+
+<p>Hapi 유닛테스트 모듈인 Lab과 검증 모듈 Code를 사용해서 구현한다. Hapi에서는 유닛 테스트에 언급하는 Test Suite를 <code>experiment</code>, Test Case는 <code>test</code>라고 부른다. 중첩 experiemnt를 가질 수 있고 테스트 전략에 따라서 테스트 케이스를 구조화 할 수 있다.</p>
+<pre class="lang:js decode:true" title="routes/users/users.spec.js">'use strict';
+
+var Code = require('code'); // 검증 모듈
+var Lab = require('lab'); // 유닛 테스트 모듈 
+var lab = exports.lab = Lab.script();
+var path = require('path');
+var app = require(path.join(__dirname, '../../index.js')); // 서버 모듈 
+    // 서버 객체를 할당한 부분에서 module.exports = server 코드를 추가하여
+    // 서버 객체를 노출시켜서 사용해야 한다.
+
+// 테스트 suite
+lab.experiment('/users', function () {
+
+  // 테스트 케이스 
+  lab.test('GET', function (done) {
+    var opts = {
+      method: 'GET',
+      url: '/users'
+    };
+
+    // 서버 구동 
+    app.inject(opts, function (res) {
+
+      // Code 검증 모듈로 결과값을 검증한다. 
+      Code.expect(res.statusCode).to.be.equal(200);
+      Code.expect(res.result).contain('users');
+      Code.expect(res.result.users).to.be.an.array();
+
+      // 비동기 코드이므로 done() 콜백함수로 종료를 알린다.
+      done();
+    });
+  });
+
+});
+</pre>
+<p>위 코드에서는 우리가 구현한 서버 객체를 require() 함수로 불러온다. 기존의 서버 생성 코드에 server 객체를 노출시키는 코드 추가하자.</p>
+<pre class="lang:js decode:true " title="index.js">var Hapi = require('hapi');
+
+/* 서버 객체 생성 및 설정 */
+
+// 서버 객체를 노출한다.
+module.exports = server;
+</pre>
+<p>작성한 테스트 코드를 아래 명령어로 실행해보자. 콘솔 화면을 통해 테스트 결과를 확인할 수 있다.</p>
+
+<p><code>node_modules/lab/bin/lab users.spec.js</code></p>
+<h2>깔끔한 테스트를 위한 작업</h2>
+<p>Api 서버 테스트를 여러번 수행할 수록 서버에 테스트 자원이 쌓이게 된다. 예를 들어 post 프로토콜을 테스트 할 경우 데이터베이스에 데이터를 저장한다면 데이터가 계속 쌓이게 된다. 어차피 개발서버에서 테스트 한다면 상관없을 수도 있으나 테스트 후에는 그 흔적이 남지 않아야 한다고 생각한다. 이번 테스트 뿐만 아니라 다른 테스트에 영향을 미칠수 있기 때문이다.</p>
+
+<p>Lab 모듈에서는 <code>before()</code>와 <code>after()</code> 함수를 지원한다. test()로 테스트 케이스를 진행하기 전에 뭔가 작업을 하고 테스트 종료후 마무리 작업을 위한 함수다. before()에선 post 프로토콜로 테스트 데이터를 입력하고 after()에서는 delete 프로토콜로 테스트 데이터를 삭제한다.  test()에서는 get, put등의 프로토콜을 테스트한다. before()/after()는 experiment()에서 각 각 한번만 실행된다. 매 테스트마다 실행하기 위한 <code>beforeEach()</code>/<code>afterEach()</code>함수도 지원한다.</p>
+<pre class="lang:js decode:true " title="routes/users/users.spec.js">'use strict';
+
+var Code = require('code');
+var Lab = require('lab');
+var lab = exports.lab = Lab.script();
+var path = require('path');
+var app = require(path.join(__dirname, '../../index.js'));
+
+lab.experiment('/users', function () {
+
+  // 테스트 데이터 
+  var tester = {
+    name: 'Unit Tester'
+  };
+
+  // 테스트 전에 post로 테스트 자원을 입력하는 프로토콜을 호출한다.
+  lab.before(function (done) {
+    var opts = {
+      method: 'POST',
+      url: '/users',
+      payload: {
+        name: tester.name
+      }
+    };
+    app.inject(opts, function (res) {
+      Code.expect(res.statusCode).to.be.equal(201);
+      tester.id = res.result.users.indexOf(tester.name);
+      done();
+    });
+  });
+
+  // 테스트 종료 후 테스트 자원을 삭제하는 프로토콜을 호출한다.
+  lab.after(function (done) {
+    var opts = {
+      method: 'DELETE',
+      url: '/users?id=' + tester.id
+    };
+    app.inject(opts, function (res) {
+      Code.expect(res.statusCode).to.be.equal(200);
+      done();
+    });
+  });
+
+  lab.test('GET', function (done) {
+    var opts = {
+      method: 'GET',
+      url: '/users'
+    };
+    app.inject(opts, function (res) {
+      Code.expect(res.statusCode).to.be.equal(200);
+      Code.expect(res.result).contain('users');
+      Code.expect(res.result.users).to.be.an.array();
+
+      // before()에서 입력한 테스트 데이터를 확인한다.
+      Code.expect(res.result.users[tester.id]).to.be.equal(tester.name);
+
+      done();
+    });
+  });
+
+  lab.test('GET users/{id}', function (done) {
+    var opts = {
+      method: 'GET',
+      url   : '/users/' + tester.id
+    };
+    app.inject(opts, function (res) {
+      Code.expect(res.statusCode).to.be.equal(200);
+
+      // before()에서 입력한 테스트 데이터를 확인한다.
+      Code.expect(res.result.user).to.be.equal(tester.name);
+      done();
+    });
+  });
+
+});
+</pre>
+<p>만약 테스트가 많을 경우 한 테스트 케이스만 실행할 필요가 있다. 반대로 특정 테스트는 스킵하고 싶을 때가 있는데 lab.test() 함수의 두 번째 파라메터로 <code>{only: Boolean, skip: Boolena}</code> 객체를 넘겨주면 가능하다.</p>
+
+<p>테스트 파일(*.spec.js)이 많아지면 매번 명령어로 실행하기 불가능하다. 리눅스에 많이 사용하는 Makefile를 활용하면 이를 손쉽게 관리할 수 있다.</p>
+<pre class="lang:default decode:true " title="Makefile">all: users auth
+
+users:
+  node_modules/lab/bin/lab app/routes/users/*.spec.js
+
+auth:
+  node_modules/lab/bin/lab app/routes/auth/*.spec.js
+</pre>
+<p>/users 프로토콜을 테스트할 때는 <code>make user</code>로 간단히 실행한다. <code>make</code> 명령어는 전체 테스트를 실행한다. Makefile은 프로젝트 루트폴더에 관리하는 것이 좋고, 스페이스가 아니라 반드시 ‘탭’을 사용해야 한다는 점을 주의하자.</p>
+<h2>테스트 결과</h2>
+<p>Lab 모듈은 훌륭한 테스트 결과 문서를 제공한다. Lab 명령어 실행시 -r은 리포트 형식을 정하는 옵션이다. <code>-r html</code> 옵션을 줘서 html 형식으로 테스트 결과를 출력하고 <code>-o report.html</code> 옵션을 추가하여 파일로 저장할 수 있다. Makefile을 아래처럼 수정해 보자.</p>
+<pre class="lang:default decode:true" title="Makefile">users:
+  node_modules/lab/bin/lab <strong>-o report.html -r html</strong> app/routes/users/*.spec.js
+</pre>
+<h2>Grunt로 자동화</h2>
+<p>지금까지의 작업을 Grunt로 자동화 해보자. 우리는 <code>grunt test</code> 단 한줄의 명령어로 테스트 실행, 리포트 생성 및 생성된 리포트 열람의 작업을 수행할 수 있다. 아래 명령어로 grunt 관련 모듈을 설치한다.</p>
+
+<p><code>npm install --save-dev grunt grunt-lab grunt-open</code></p>
+
+<p>프로젝트 루트 폴더에 Gruntfile.js를 생성하고 아래 코드를 작성한다.</p>
+<pre class="lang:js decode:true" title="Gruntfile.js">module.exports = function (grunt) {
+
+  grunt.initConfig({
+
+    // lab 명령어 관련 설정 
+    lab: {
+      files: ['app/**/*.spec.js'], // 모든 테스트 파일을 수행한다.
+      nodeEnv: 'development',
+      DEBUG: '*',
+      color: true,
+      verbose: true,
+      timeout: 7000,
+      parallel: false,
+      reportFile: 'report.html', // 리포트 파일을 생성한다.
+      reporter: 'html',
+      coverage: true
+    },
+
+    // 생성한 리프포트 파일을 크롬 브라우저로 열람한다.
+    open: {
+      report: {
+        path: 'report.html', 
+        app: 'Google Chrome' 
+      }
+    }
+
+  });
+
+  grunt.loadNpmTasks('grunt-lab');
+  grunt.loadNpmTasks('grunt-open');
+
+  grunt.registerTask('test', ['lab', 'open:report']);
+
+};</pre>
+<p>이제 grunt test 명령어를 수행해보자. 작성한 모든 테스트가 실행되고, report.html에 결과를 저장한 뒤, 크롬 브라우져가 열릴 것이다.</p>
+
+<p>전체 코드: <a href="https://github.com/jeonghwan-kim/hapi_study/tree/09_test">https://github.com/jeonghwan-kim/hapi_study/tree/09_test</a></p>
+
+<p> </p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">What I Learn</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>What I Learn</li>
+          <li><a href="mailto:ej88ej@gmail.com">ej88ej@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jeonghwan-kim"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jeonghwan-kim</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/JeonghwanKim4"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">JeonghwanKim4</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>#web #backend #angularjs #nodejs #fullstack</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

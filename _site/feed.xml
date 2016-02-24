@@ -1,0 +1,1019 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>What I Learn</title>
+    <description>#web #backend #angularjs #nodejs #fullstack</description>
+    <link>http://whatilearn.com/</link>
+    <atom:link href="http://whatilearn.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Wed, 24 Feb 2016 10:48:24 +0800</pubDate>
+    <lastBuildDate>Wed, 24 Feb 2016 10:48:24 +0800</lastBuildDate>
+    <generator>Jekyll v3.0.3</generator>
+    
+      <item>
+        <title>서울에서 Elastic Beanstalk 사용하기</title>
+        <description>&lt;p&gt;AWS 한국 리젼이 추가되면서 빈스톡도 서울에 설치해봤다. 프로젝트를 새로 만들고 깃 커밋을 작성한 뒤에 
+AWS 커맨드라인 명령어로 빈스톡을 초기화 했다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;eb init
+
+Select a default region
+1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; us-east-1 : US East &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;N. Virginia&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;결과에 서울 리전이 보이지 않는다. 하긴 빈스톡 사용한지도 좀 오래됐다. 커맨드라인 툴의 버전을 확인해 봤다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;eb --version
+// EB CLI 2.x.x &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Python 2.7.1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;가장 최근 버전이 v3.7이다. 파이썬 패키지 툴로 업그레이드 한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;pip install --upgrade awsebcli
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;PIP로 업그레이드가 안된다.&lt;br /&gt;
+&lt;a href=&quot;http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html&quot;&gt;문서&lt;/a&gt;에 
+커맨드라인툴은 파이썬 3를 지원하지 않는다고 한다. 장고 프로젝트를 하면서 기존 2.7 버전을
+3 버전으로 업그레이드 했던것이 문제다. 다시 다운그레이드를 한다. 
+(&lt;a href=&quot;http://stackoverflow.com/questions/5621952/uninstall-python-3-2-on-mac-os-x-10-6-7&quot;&gt;참고&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;다시 업데이트 후 빈스톡을 초기화 하면  9번에 서울 리즌을 확인할 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;eb init
+
+Select a default region
+1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; us-east-1 : US East &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;N. Virginia&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; us-west-1 : US West &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;N. California&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; us-west-2 : US West &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Oregon&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+4&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; eu-west-1 : EU &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Ireland&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+5&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; eu-central-1 : EU &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Frankfurt&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+6&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ap-southeast-1 : Asia Pacific &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Singapore&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+7&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ap-southeast-2 : Asia Pacific &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Sydney&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+8&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ap-northeast-1 : Asia Pacific &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Tokyo&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+9&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ap-northeast-2 : Asia Pacific &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Seoul&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+10&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; sa-east-1 : South America &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Sao Paulo&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+11&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; cn-north-1 : China &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Beijing&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;11번에 베이징도 추가되었다. 도교 8번과 바꿨으면 마케팅 수단이 될수 있지 않았을까?ㅋㅋㅋ 
+Asia Pacific으로 분류하지 않고 China로 한걸 보면 더 추가될지도 모르겠다.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 20 Feb 2016 00:00:00 +0800</pubDate>
+        <link>http://whatilearn.com/2016/02/20/beanstalk-in-seoul.html</link>
+        <guid isPermaLink="true">http://whatilearn.com/2016/02/20/beanstalk-in-seoul.html</guid>
+        
+        <category>aws</category>
+        
+        <category>elastic beanstalk</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Jekyll 커스터마이징 1 - 코멘트와 페이지네이션</title>
+        <description>&lt;p&gt;지킬(Jekyll) 기본 템플릿에는 글목록과 글만 있다. 워드프레스로 작성한 블로그를 지킬로 가져오는데 이것만으로는
+ 부족한 점이 많다. 각 글에는 댓글 시스템을 추가하고 글 목록은 페이지네이션으로 처리하자.&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;코멘트&lt;/h2&gt;
+
+&lt;p&gt;블로그를 이동하면서 기존 댓글을 포기한 점은 아쉽다. (&lt;a href=&quot;http://whatilearn.com/2016/02/07/from-wordpress-to-jekyll.html&quot;&gt;이전포스트&lt;/a&gt; 참고) 
+워드프레스로 영원히 작성하리라 생각하고 젯팩 코멘트를 사용했었기 때문에 이동하는데 포기할 수 밖에 없었다. 
+이런걸 선택할 때도 나중 마이그레이션까지 염두해 둬야 하겠다.&lt;/p&gt;
+
+&lt;h3 id=&quot;disqus&quot;&gt;Disqus&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://disqus.com&quot;&gt;Disqus&lt;/a&gt;는 몇몇 블로그를 방문하면서 유심히 봐았던 댓글 시스템이다. 각 포스트마다 유일한 댓글 쓰레드를 
+만들어 주는 것인데, 블로그 프레임웍과 무관하게 사용할 수 있는게 장점이다. (젯팩은 워드프레스에서만 동작한다) 
+소셜 로그인 기능을 지원하기 때문에 사용자가 댓글 입력하는데 귀찮은 단계를 줄여주는 이점도 있다.&lt;/p&gt;
+
+&lt;p&gt;Disqus 설치는 매우 간단하다. 구글 애널리스틱처럼 대쉬보드에서 코드만 복사해서 붙여넣으면 
+된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://whatilearn.comassets/imgs/2016/disqus-admin.png&quot; alt=&quot;disqus admin&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;“Universal Code”를 선택해서 코드를 복사하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;_includes/comments.html&lt;/code&gt; 파일을 만들어 이 코드를 붙여 넣는다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- _includes/comments.html --&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;disqus_thread&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/**
+   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+   */&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/*
+   var disqus_config = function () {
+   this.page.url = PAGE_URL;  // Replace PAGE_URL with your page&#39;s canonical URL variable
+   this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page&#39;s unique identifier variable
+   };
+   */&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// DON&#39;T EDIT BELOW THIS LINE&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;script&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;//your-service-name.disqus.com/embed.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setAttribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;data-timestamp&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;})();&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;noscript&amp;gt;&lt;/span&gt;Please enable JavaScript to view the &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://disqus.com/?ref_noscript&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;nofollow&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;comments powered by Disqus.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/noscript&amp;gt;&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;그리고 커멘트를 보여줄 &lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts/post.html&lt;/code&gt; 파일에 comments.html을 불러온다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+layout: default
+---
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;article&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemscope&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemtype=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schema.org/BlogPosting&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;header&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post-header&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post-title&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemprop=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name headline&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Jekyll 커스터마이징 1 - 코멘트와 페이지네이션&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post-meta&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;time&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;datetime=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2016-02-07T00:00:00+08:00&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemprop=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;datePublished&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Feb 7, 2016&lt;span class=&quot;nt&quot;&gt;&amp;lt;/time&amp;gt;&lt;/span&gt; • &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemprop=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;author&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemscope&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemtype=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schema.org/Person&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemprop=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;Chris&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&amp;lt;/span&amp;gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/header&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post-content&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;itemprop=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;articleBody&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Disqus를 로딩한다 --&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;post-comments disqus&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;disqus_thread&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/**
+   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+   */&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/*
+   var disqus_config = function () {
+   this.page.url = PAGE_URL;  // Replace PAGE_URL with your page&#39;s canonical URL variable
+   this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page&#39;s unique identifier variable
+   };
+   */&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// DON&#39;T EDIT BELOW THIS LINE&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;script&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;//whatilearncom.disqus.com/embed.js&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setAttribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;data-timestamp&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;})();&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;noscript&amp;gt;&lt;/span&gt;Please enable JavaScript to view the &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://disqus.com/?ref_noscript&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;rel=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;nofollow&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;comments powered by Disqus.&lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&amp;lt;/noscript&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/article&amp;gt;&lt;/span&gt;
+ 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;페이지네이션&lt;/h2&gt;
+
+&lt;p&gt;블로그의 메인은 보통 최근 작성한 글 목록을 보여준다. 글이 점점 늘어나면 목록도 그만큼 늘어나기 때문에 
+페이지네이션이 필요하다. 지킬에서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;config.yml&lt;/code&gt; 설정파일에 페이지네이션을 활성화하는 코드를 추가하고 
+&lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt;파일에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;paginator&lt;/code&gt; 변수로 페이지네이션 관련 레이아웃을 작성할 수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;configyml-&quot;&gt;_config.yml 수정&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; 파일에 아래 내용을 추가한다. &lt;code class=&quot;highlighter-rouge&quot;&gt;paginate&lt;/code&gt;는 한 페이지에 출력할 글 갯수를 의미한다.
+그리고 &lt;code class=&quot;highlighter-rouge&quot;&gt;gems&lt;/code&gt;에 &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll-paginate&lt;/code&gt;를 추가한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;paginate&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;10&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;gems&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyll-paginate&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;indexhtml-&quot;&gt;index.html 수정&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt;은 두 가지 파트로 구분할 수 있다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;위에서 설정한 paginate 값만큼 포스트 목록 부분&lt;/li&gt;
+  &lt;li&gt;페이지 링크 부분&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;paginated-list-&quot;&gt;paginated list 출력&lt;/h3&gt;
+
+&lt;p&gt;모든 페이지를 출력하는 for 루프에 사용하는 &lt;code class=&quot;highlighter-rouge&quot;&gt;site&lt;/code&gt; 변수 대신 &lt;code class=&quot;highlighter-rouge&quot;&gt;paginator&lt;/code&gt; 변수를 사용하여 페이지네이션된 리스트를 출력한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;site.posts&lt;/code&gt; -&amp;gt;  &lt;code class=&quot;highlighter-rouge&quot;&gt;paginator.posts&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;pagination-links-&quot;&gt;pagination links 출력&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://jekyllrb.com/docs/pagination/&quot;&gt;jekyll 페이지&lt;/a&gt;에 나온 샘플코드는 좀 이상하다. 
+1번 링크가 제대로 만들어지지 않았다. 이 부분만 수정한 코드다.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/jeonghwan-kim/113be09ca20860d67b8c.js&quot;&gt;&lt;/script&gt;
+
+</description>
+        <pubDate>Sun, 07 Feb 2016 00:00:00 +0800</pubDate>
+        <link>http://whatilearn.com/2016/02/07/jekyll-customizing.html</link>
+        <guid isPermaLink="true">http://whatilearn.com/2016/02/07/jekyll-customizing.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>워드프레스에서 지킬로 블로그 이동</title>
+        <description>&lt;p&gt;이번 설 연휴에 뭘해 볼까하다가 블로그를 옮기기로 작심했다. 워드프레서스에 지킬(&lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;)로 옮기고 싶었다. 
+다른 프로젝트에서 지킬 웹페이지를 다뤄볼 기회가 있었는데 은근히 재밌는 경험이었다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;코딩하듯이 텍스트 에디터로 글을 작성하는 점&lt;/li&gt;
+  &lt;li&gt;커맨드라인 명령어로 웹페이지를 생성하는 과정&lt;/li&gt;
+  &lt;li&gt;깃헙 페이지에서 지킬로 만든 페이지를 무료 호팅해주는 점&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이런 점이 끌린다. (물론 워드프레스와 아마존웹서비스 조합도 충분히 훌륭하다.) 하루정도 걸려서 기존 블로그를
+지킬로 변경해서 깃헙 호스팅으로 옮겼다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;댓글 옮기기&lt;/h2&gt;
+
+&lt;p&gt;워드프레스의 댓글을 Disqus로 옮기고 지킬에서 Disqus 댓글을 붙이는 방법이 있다. 그러나 기존에 댓글은
+모두 젯팩으로 작성된 것이었다. 마이그레이션 할 방법을 찾지 못해서 과감히 포기했다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;글 옮기기&lt;/h2&gt;
+
+&lt;p&gt;이건 플러그인 도움을 받았다. &lt;a href=&quot;https://wordpress.org/plugins/jekyll-exporter/&quot;&gt;Jekyll Exporter&lt;/a&gt;라는
+플러그인은 워드프레스 컨텐츠를 지킬 프로젝트로 변경해 주는 플러그인이다. 플러그인을 실행하면 Zip 압축파일을
+다운로드 해준다.&lt;/p&gt;
+
+&lt;p&gt;그러나 이 압축파일을 푸는데 문제가 있었다. 압축을 풀면 다른 이름의 압축파일이 생성되고 이 과정이
+무한 반복된다. 언젠가 이런 비슷한 문제를 경험한 것 같다. 데쟈뷴가?&lt;/p&gt;
+
+&lt;p&gt;아마 압축파일 자체가 문제인 것 같다. 다른 방법으로 압축파일을 만들수 없을까?
+&lt;a href=&quot;https://github.com/benbalter/wordpress-to-jekyll-exporter#command-line-usage&quot;&gt;플러그인 사용법&lt;/a&gt;을 보면
+워드프레스 서버에 SSH 접속하여 직접 플러그인을 실행하면 압축파일을 만들 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ php jekyll-export-cli.php &amp;gt; jekyll-export.zip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;SCP로 내 컴퓨터에 압축파일을 다운로드 한다. (이제 파일 옮긴다고 GUI툴 안써도 된다!)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ scp user@domain.com:jekyll-export.zip jekyll-export.zip 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;커맨드라인으로 들어온 김에 여기서 unzip으로 압축을 풀어보자&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ unzip jekyll-export.zip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;이제야 시원하게 압축이 풀렸다! 폴더 구조를 보면 jekyll 프로젝트가 맞다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;깃헙에 호스팅&lt;/h2&gt;
+
+&lt;p&gt;깃헙에서 무료 호스팅하는 페이지는 두 가지 종류다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;유저 페이지&lt;/li&gt;
+  &lt;li&gt;프로젝트 페이지&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;호스팅 방법이 조금 다르다. 유저 페이지는 깃헙 계정당 한 개만 만들수 있다. 프로젝트 페이지는 저장소별로
+만들수 있는데 gh-page 브랜치를 사용한다. 난 유저 페이지를 사용할 것이다.&lt;/p&gt;
+
+&lt;p&gt;저장소는 &lt;code class=&quot;highlighter-rouge&quot;&gt;username.gihub.com&lt;/code&gt;으로 만들어야한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git init
+$ git add --a 
+$ git commit -am &quot;From wordpress&quot;
+$ git remote add origin &quot;https://github.com/username/username.github.com.git&quot;
+$ git push origin master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;코드를 깃헙 저장소에 푸시한 뒤 수초가 지나면 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;http://username.github.io&quot;&lt;/code&gt;로 호스팅 페이지에 접속할 수 있다&lt;/p&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;도메인 설정&lt;/h2&gt;
+
+&lt;p&gt;아마존웹서비스의 Route53으로 블로그 도메인 설정을 변경해야 한다. 기존 워드프레스 블로그는 Ec2 인스턴스에
+연결해놨었는데 이를 깃헙 호스팅 페이지로 이동해야한다.&lt;/p&gt;
+
+&lt;p&gt;DNS 설정시 A레코드와 CNAME레코드만 설정하면 된다.&lt;/p&gt;
+
+&lt;p&gt;A레코드에는 아래 두 아이피를 추가한다&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;192.30.252.153
+192.30.252.154
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://sophiafeng.com/technical/2015/02/12/setting-up-custom-domain-name-with-github-pages-and-amazon-route-53/&quot;&gt;참고&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;CNAME은 “www”를 추가하고 깃헙 호스팅 페이지의 주소(&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;http://username.github.io&quot;&lt;/code&gt;)를 설정한다.&lt;/p&gt;
+
+&lt;p&gt;이제 도메인으로 접속해보자. 깃헙 404 페이지가 뜬다. 왜 그러지? 사실 이 부분에서 삽질이 많았다.
+한 가지 설정이 더 있는데 &lt;a href=&quot;https://help.github.com/articles/adding-a-cname-file-to-your-repository/&quot;&gt;저장소에 CNAME 파일을 추가&lt;/a&gt;해야 한다. 
+도메인명만 한 줄 추가하여 저장소에 푸시한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;whatilearn.com
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;이제 도메인으로 블로그에 접속할 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;남은 이슈&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;검색 기능을 어떻게 할까?&lt;/li&gt;
+  &lt;li&gt;카태고리, 태그 관리&lt;/li&gt;
+  &lt;li&gt;워드프레스보다 검색엔진에 노출이 잘 될까?&lt;/li&gt;
+  &lt;li&gt;댓글은 뭘로하나? Disqus로…&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 07 Feb 2016 00:00:00 +0800</pubDate>
+        <link>http://whatilearn.com/2016/02/07/from-wordpress-to-jekyll.html</link>
+        <guid isPermaLink="true">http://whatilearn.com/2016/02/07/from-wordpress-to-jekyll.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Sequelize Seed &amp;#8211; 시드 데이터 관리하기</title>
+        <description>&lt;p&gt;API 서버를 만들다 보면 테스트가 필요하다. 코드단에서 유닛테스트 따위를 말하는게 아니다. 
+서버 개발자가 만든 코드를 개발 서버에 배포한뒤 모바일 개발자가 API 서버를 사용할 때를 말한다. 
+서버를 업데이트 할 때마다 데이터베이스가 텅텅 비어있기 때문에, (개발초기에 디비 스키마가 확정되지 않은 상태라면 매번 디비 스키마를 갱신한다) 뭔가 샘플 데이터를 입력해야만 모바일 개발자가 편하다.&lt;/p&gt;
+
+&lt;p&gt;그 동안은 seed 모듈을 만들어서 서버 구동시에 데이터베이스 싱크가 종료된 직후 seed 데이터를 입력하도록 코딩했다. &lt;a href=&quot;https://github.com/sequelize/sequelize&quot;&gt;Sequelize&lt;/a&gt;에서 &lt;a href=&quot;https://github.com/sequelize/cli#seed&quot;&gt;seed 기능&lt;/a&gt;을 지원하는지 알기 전까지는…&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 디비 스키마를 초기화 한다.&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;force&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// 시드 데이터를 입력한다.&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;./seed&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;// 서버 리슨.&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;listen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;PORT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;IP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;이제는 &lt;a href=&quot;https://github.com/sequelize/cli&quot;&gt;Sequelize-cli&lt;/a&gt;로 migration를 한것과 유사하게 seed 데이터를 관리할 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;시더 초기화&lt;/h2&gt;
+
+&lt;p&gt;Sequelize-cli 로 아래 명령어를 실행하면 &lt;code class=&quot;highlighter-rouge&quot;&gt;seeders&lt;/code&gt; 폴더가 생성된다. &lt;code class=&quot;highlighter-rouge&quot;&gt;migrations&lt;/code&gt; 폴더처럼 앞으로 &lt;code class=&quot;highlighter-rouge&quot;&gt;seeders&lt;/code&gt; 폴더에 시드 데이터를 관리할 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sequelize init:seeders
+// seeders 폴더 생성됨
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;시더 파일 생성&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;seed:create&lt;/code&gt;로 시드 파일을 생성한다. 마이그레이션을 생성했던 것처럼 타임스탬프가 찍인 자바스크립트 파일이 seeders 폴더에 생성될 것이다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sequelize seed:create
+// seeders/timestamp-unnamed-seeder.js 생성됨
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;이 파일 구조를 살펴보자. 많이 보던 구조다. up, down 함수로 구성된 것이 마이그레이션 파일과 똑같은 형식이다. Users 테이블에 데이터를 추가해 보자.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;module.exports = {
+  up: function (queryInterface, Sequelize) {
+
+    // 시드 데이터를 추가한다.
+    return queryInterface.bulkInsert(&#39;Users&#39;, [{
+      email: &#39;user1@mail.net&#39;,
+      name: &#39;user1&#39;
+    }, {
+      email: &#39;user2@mail.net&#39;,
+      name: &#39;user2&#39;
+    }], {});
+  },
+
+  down: function (queryInterface, Sequelize) {
+
+    // 추가했던 데이터를 삭제한다. 
+    return queryInterface.bulkDelete(&#39;Users&#39;, {
+      email: {
+        $in: [&#39;user1@mail.net&#39;, &#39;user2@mail.net&#39;]
+      }
+    }, {});
+  }
+};
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;시더 실행&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sequelize db:seed&lt;/code&gt; 명령으로 시더를 입력한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sequelize db:seed
+
+Starting &#39;db:seed&#39;...
+Finished &#39;db:seed&#39; after 71 ms
+== 20160131203128-users-seeder: migrating =======
+== 20160131203128-users-seeder: migrated (0.016s)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;마이그레이션을 실행했을 때와 비슷한 결과를 보여준다. 데이터베이스 테이블에는 &lt;code class=&quot;highlighter-rouge&quot;&gt;SequelizeData&lt;/code&gt; 테이블이 생성되고 방금 실행한 seed 파일명이 기록된다. 입력을 취소할 때는 &lt;code class=&quot;highlighter-rouge&quot;&gt;db:seed:undo&lt;/code&gt;나 &lt;code class=&quot;highlighter-rouge&quot;&gt;db:seed:undo:all&lt;/code&gt; 명령어를 사용한다.&lt;/p&gt;
+
+&lt;h1 id=&quot;section-3&quot;&gt;좀 더 생각할 점&lt;/h1&gt;
+
+&lt;p&gt;자 이제 서버 코드에서 직접 샘플 데이터 입력해야하는, 서버 본연의 기능과는 좀 거리가 있는 코드를 제거할 수 있게 되었다. Sequelize-cli의 seed 명령으로 데이터를 관리할 수 있기 때문이다. 그러나 디비 마이그레이션과 관련해서 생각해 볼 필요가 있다.&lt;/p&gt;
+
+&lt;p&gt;가정해 보자.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Users 테이블에 name이 ‘chris’인 데이터를 추가하는 시드 파일 생성.&lt;/li&gt;
+  &lt;li&gt;시드 실행.&lt;/li&gt;
+  &lt;li&gt;Users 테이블의 name 컬럼을 nickname으로 변경하는 마이그레이션 파일 생성.&lt;/li&gt;
+  &lt;li&gt;마이그레이션 실행.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;시드와 마이그레이션이 빈번한 개발 단계에서는 순서에 맞게 실행하면 문제가 없을거다. 그리나 이게 프로덕션 서버로 올라가서 여러 개의 시드와 마이그레이션이 한번에 실행된다고 하면 어떨까? 마이그레이션을 모두 수행한 다음 시드를 수행한다면? 시드에서는 name 컬럼에 값을 입력하도록 했는데 name을 nickname으로 변경하는 마이그레이션을 먼저 실행했기 때문에 실패할 것이다.&lt;/p&gt;
+
+&lt;p&gt;그렇다고 순서를 반대로하면 문제가 없을까?&lt;/p&gt;
+
+&lt;p&gt;반대로 가정을 해보자.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Users 테이블의 name 컬럼을 nickname으로 변경하는 마이그레이션 파일 생성.&lt;/li&gt;
+  &lt;li&gt;마이그레이션 실행.&lt;/li&gt;
+  &lt;li&gt;Users 테이블에 name이 ‘chris’인 데이터를 추가하는 시드 파일 생성.&lt;/li&gt;
+  &lt;li&gt;시드 실행.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;처음과 반대로 seed를 먼저 실행하면 바로 오류가 난다. Users 테이블의 nickname 컬럼이 아직 없기 때문이다.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 03 Feb 2016 20:02:53 +0800</pubDate>
+        <link>http://whatilearn.com/sequelize-seed-%ec%8b%9c%eb%93%9c-%eb%8d%b0%ec%9d%b4%ed%84%b0-%ea%b4%80%eb%a6%ac%ed%95%98%ea%b8%b0/</link>
+        <guid isPermaLink="true">http://whatilearn.com/sequelize-seed-%ec%8b%9c%eb%93%9c-%eb%8d%b0%ec%9d%b4%ed%84%b0-%ea%b4%80%eb%a6%ac%ed%95%98%ea%b8%b0/</guid>
+        
+        <category>migration</category>
+        
+        <category>seed</category>
+        
+        <category>sequelize</category>
+        
+        
+        <category>Sequelize</category>
+        
+      </item>
+    
+      <item>
+        <title>morgan-helper</title>
+        <description>&lt;p&gt;Morgan으로 로깅하는데 POST Body도 함께 나오도록 했다.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/jeonghwan-kim/065dabf47987e729735a.js&quot;&gt;&lt;/script&gt;
+
+</description>
+        <pubDate>Mon, 01 Feb 2016 16:29:51 +0800</pubDate>
+        <link>http://whatilearn.com/morgan-helper/</link>
+        <guid isPermaLink="true">http://whatilearn.com/morgan-helper/</guid>
+        
+        <category>express</category>
+        
+        <category>logging</category>
+        
+        <category>morgan</category>
+        
+        
+        <category>Express.js</category>
+        
+      </item>
+    
+      <item>
+        <title>lodash</title>
+        <description>&lt;p&gt;자바스크립트 유틸리티 라이브러리로 &lt;a href=&quot;http://whatilearn.com/underscore-js/&quot;&gt;underscore&lt;/a&gt;를 사용하다가 요즘은 거의 &lt;a href=&quot;https://lodash.com&quot;&gt;lodash&lt;/a&gt;로 옮겼다. 체감하지는 못하지만 성능이 좋다고 한다. 내가 살펴보는 대부분의 오픈소스도  undersocre에서 lodash로 옮기고 있는 분위기다. lodash 사용기를 정리해 보자. 뭐 underscore와 별 차이가 없을지도 모르겠다.&lt;/p&gt;
+
+&lt;h2 id=&quot;fill&quot;&gt;_.fill()&lt;/h2&gt;
+
+&lt;p&gt;특정한 값으로 배열을 채울 때 사용한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// [true, true, true]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;pluck&quot;&gt;_.pluck()&lt;/h2&gt;
+
+&lt;p&gt;객체로 구성된 배열에서 객체의 특정 키에대한 값을 추출할 때 사용한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;users&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;Chris&#39;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;Mike&#39;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;Sam&#39;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}];&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pluck&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;users&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;id&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// [1, 2, 3]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;every&quot;&gt;_.every()&lt;/h2&gt;
+
+&lt;p&gt;배열을 순회하면서 각 요소에 대한 검증함수를 수행한다. 그리고 모든 결과가 true를 반환할 때 동작하는 함수이다. 이걸 어디다 사용할까 했었는데 유닛 테스트에서 사용하게 되었다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;it(&#39;should filtered by gift id&#39;, function (done) {
+  request(app)
+      .get(&#39;/api/giftTakings?GiftId=1&#39;)
+      .end(function (err, res) {
+        if (err) throw err;
+
+        _.every(res.body, function (giftTaking) {
+          return giftTaking.GiftId === 1;
+        }).should.be.true;
+        done();
+      });
+    });
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;omit--remove&quot;&gt;_.omit() 와 _.remove()&lt;/h2&gt;
+
+&lt;p&gt;포함된 아이템을 삭제한다는 점에서는 비슷한 역할을 하는 함수지만 용도가 다르다. _.omit()은 객체를 대상으로 하여 특정 키나 값을 제거하는 함수다. 그 결과 기존 객체에서 새로운 객체를 생성하여 반환한다. REST API에서 리소스 모델을 json으로 받아서 처리할 때 사용했다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function update(req, res) {
+  var value = _.omit(req.body, _.isUndefined);
+  if (_.isEmpty(value)) {
+    return res.status(400).json({error: &#39;parameter is empty&#39;});
+  }
+
+  // value 객체를 이용하여 모델 업데이트 
+  // ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;_.remove()는 배열을 대상으로 그 삭제 기능을 하고 결과 삭제된 아이템을 배열로 반환한다. 말이 좀 애매한데 예제를 보면 쉽게 이해할 수 있다. (아래 코드는 lodash 문서 예제와 동일하다)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var array = [1, 2, 3, 4];
+var evens = _.remove(array, function(n) {
+  return n % 2 == 0;
+});
+
+console.log(array);
+// → [1, 3]
+
+console.log(evens);
+// → [2, 4]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;toarray&quot;&gt;_.toArray()&lt;/h2&gt;
+
+&lt;p&gt;그동안 toArray() 를 잘못사용하고 있었다. 문자열을 파싱해서 배열로 변환할 것이다. 구분자는 디폴트로 쉼표로 인식하여 처리할 것이다. 이런 생각으로 아래와 같이 코딩했었다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;function update(req, res) {
+   var ids = _.toArray(req.params.id) // req.params.id = &#39;1,2,3&#39;;
+   // ids = [&#39;1&#39;, &#39;2&#39;, &#39;3&#39;] 이렇게 나올줄 알았다. 
+   // 그러나 
+   // ids = [ &#39;1&#39;, &#39;,&#39;, &#39;2&#39;, &#39;,&#39;, &#39;3&#39; ] 이렇게 나온다. 
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://lodash.com/docs#toArray&quot;&gt;문서&lt;/a&gt;를 확인해 보니 잘못되도 한참 잘못됐다. toArray() 함수는 기본적으로 객체의 밸류를 배열로 반환하는 함수이며 문자열을 받을 경우는 각 한 글자씩 쪼개서 배열로 반환한다. id를 쉼표로 구분한 문자열로 받을 때 이것을 배열로 처리하려면 toArray() 함수는 적당하지 않다.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 31 Jan 2016 23:14:43 +0800</pubDate>
+        <link>http://whatilearn.com/lodash/</link>
+        <guid isPermaLink="true">http://whatilearn.com/lodash/</guid>
+        
+        <category>lodash</category>
+        
+        
+        <category>Javascript</category>
+        
+      </item>
+    
+      <item>
+        <title>AWS 서울 리전으로 블로그 이동</title>
+        <description>&lt;p&gt;아마존웹서비스 서울 리전 출시전에는 지리적으로 한국과 가장 가까운 곳이 도쿄였다. 블로그를 도쿄에 EC2 하나로 구성한 것을 이번 기회에 서울로 옮기기로 작정했다. 이따금 데이터베이스 데몬이 죽는 경우가 발생해서 여간 귀찮지 않았기 때문. 이왕 하는김에 RDS로 분리하자. 장애를 고치는 것보다 돈 조금내고 신경 안쓰는게 더 낫다.&lt;/p&gt;
+
+&lt;h2 id=&quot;ec2--&quot;&gt;도쿄에서 서울로 EC2 인스턴스 복제&lt;/h2&gt;
+
+&lt;p&gt;서울 리전이라고해서 새로울 것은 없었다. 아니다. EC2를 다른 리전에 복제할 경우는 좀 달랐다. 방법은 이렇다. 도쿄 EC2 인스턴스를 AMI로 스샷을 만든다. 그리고 스샷을 복사해 서울 리전으로 옮긴다. 그럼 서울리전의 EC2 대쉬보드에서 복사된 스냅샷을 확인할 수 있을 것이다. 이를 이용해 EC2 인스턴스를 만들 수 있었다.&lt;/p&gt;
+
+&lt;p&gt;이번에 보니 micro 인스턴스보다 작은 nano 인스턴스라고 새로 생긴것 같다. 1 vCPU에 1 GiB Memory. 이걸로 했다. 나중에 서버 부하가 생기면 ELB로 오토스케일링을 설정하면 되겠다.&lt;/p&gt;
+
+&lt;h2 id=&quot;rds&quot;&gt;RDS&lt;/h2&gt;
+
+&lt;p&gt;도쿄에 있는 EC2에 접속해서 mysqldump로 디비를 백업한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysqldump -h localhost -u ubuntu -p &amp;gt; dump.sql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;그리고 서울 리전에 생성한 RDS로 백업한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mysql -h rds_address -u user -p db_name &amp;lt; dump.sql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;RDS 설정할 때마다 궁금해서 검색하는게 있는데 private ip 설정이다. 같은 리전에 있기는 하나 사설 네트웍으로 묶여있는 건지는 확실치 않다. 우선 연결만 해놓고 보자.&lt;/p&gt;
+
+&lt;h2 id=&quot;route53&quot;&gt;Route53&lt;/h2&gt;
+
+&lt;p&gt;새로운 EC2 주소만 변경했다.&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 31 Jan 2016 03:35:32 +0800</pubDate>
+        <link>http://whatilearn.com/aws-%ec%84%9c%ec%9a%b8-%eb%a6%ac%ec%a0%84%ec%9c%bc%eb%a1%9c-%eb%b8%94%eb%a1%9c%ea%b7%b8-%ec%9d%b4%eb%8f%99/</link>
+        <guid isPermaLink="true">http://whatilearn.com/aws-%ec%84%9c%ec%9a%b8-%eb%a6%ac%ec%a0%84%ec%9c%bc%eb%a1%9c-%eb%b8%94%eb%a1%9c%ea%b7%b8-%ec%9d%b4%eb%8f%99/</guid>
+        
+        <category>aws</category>
+        
+        <category>migration</category>
+        
+        
+        <category>미분류</category>
+        
+      </item>
+    
+      <item>
+        <title>Sequelize Modeling</title>
+        <description>&lt;p&gt;글 순서가 반대로 되었다. 이왕 Sequelize ORM에 대해 정리할 것이라면 개발 순서에 따라 모델링부터 작성했으면 보기 좋았을 것 같다. 이번 글은 Sequelize로 테이블을 정의하는 방법(모델링)에 대해 알아보자&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://whatilearn.com/wp-content/uploads/2016/01/sequelize-logo-2016-01-26-1024x412.png&quot; alt=&quot;sequelize-logo-2016-01-26&quot; width=&quot;640&quot; height=&quot;258&quot; class=&quot;alignnone size-large wp-image-1082&quot; /&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;definition&quot;&gt;Definition&lt;/h1&gt;
+
+&lt;p&gt;데이터베이스 테이블을 정의하기 위해서는 &lt;code class=&quot;highlighter-rouge&quot;&gt;define()&lt;/code&gt; 함수를 사용한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;DataTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// define() 함수로 테이블을 정의한다 &lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;define&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;User&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;DataTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;birthday&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;DataTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;DATEONLY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;userType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;DataTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ENUM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;user&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;admin&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;defaultValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;user&#39;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;첫번째 파라메터 &lt;code class=&quot;highlighter-rouge&quot;&gt;&#39;User&#39;&lt;/code&gt;가 테이블 이름인데 기본적으로 복수형 이름을 갖는 테이블이 생성된다. 이 경우 Users 테이블이 생성된다. 두번째 파라메터가 테이블 컬럼을 정의하는 객체다. 여기서 키(key)는 컬럼명, 값(value)은 컬럼 속성을 정의하는데 &lt;code class=&quot;highlighter-rouge&quot;&gt;DataTypes&lt;/code&gt;에 정의된 데이터 타입을 사용한다.&lt;/p&gt;
+
+&lt;h2 id=&quot;getter-setter&quot;&gt;Getter, Setter&lt;/h2&gt;
+
+&lt;p&gt;DataTypes에 정의된 속성 말고 좀 더 구체적인 속성을 지정하고 싶다면 &lt;code class=&quot;highlighter-rouge&quot;&gt;get&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;set&lt;/code&gt; 키를 사용할 수 있다. &lt;code class=&quot;highlighter-rouge&quot;&gt;get&lt;/code&gt;에 함수를 정의하여 테이블에서 컬럼 값을 가져올 때 뭔가 후속 작업을 할 수 있도록 한다. 반대로 &lt;code class=&quot;highlighter-rouge&quot;&gt;set&lt;/code&gt;에 정의한 함수는 테이블에 해당 컬럼 값이 입력될때 전처리 작업을 처리할 수 있다. 비밀번호를 처리는 부분을 예로 들 수 있겠다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;DataTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;define&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;User&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;DataTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;STRING&lt;/span&gt;
+
+      &lt;span class=&quot;c1&quot;&gt;// 데이터 입력시 전처리 &lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setDataValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;password&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;crypto&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createHash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;md5&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;digest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;hex&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+      &lt;span class=&quot;c1&quot;&gt;// 데이터 조회시 후처리 &lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;비밀번호를 받아 저장할 경우 Setter를 통해 암호화 하여 저장하고 비밀번호를 조회할 때는 Getter 함수에서 null을 반환하여 숨김처리를 할 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;validator&quot;&gt;Validator&lt;/h2&gt;
+
+&lt;p&gt;REST API를 구현한다면 POST Body에 대한 검증시 Sequelize의 도움을 받을 수 있다. 이메일 주소를 입력받아 User 테이블에 넣는 상황을 생각해 보자. req.body.email로 요청값을 얻을 수 있다. RegExp 객체로 입력 문자열을 검증한 뒤 그 결과에 따라 작업을 진행할 수 있을 것이다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot;&gt;// 이메일 문자열 체크. 아래 정규표현식은 테스트용 임. &lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/^account@email.com$/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;400&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;warn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;check the email pattern&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot;&gt;// 다음 작업: 데이터베이스 저장 &lt;/span&gt;
+   &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;만약 Sequelize로 모델링 할때 validate 키를 사용하면 좀 더 간단한 코드를 만들 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;DataTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;define&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;User&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;DataTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;STRING&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;validate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;isEmail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 이메일 주소 형식을 검증한다 &lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;email 컬럼의 validate 키를 추가하고 &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;isEmail:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; 객체를 추가했다. 이 모델을 이용해 데이터를 입력하면 Sequelize에서 입력값에 대한 이메일 주소 패턴을 검증한다. 만약 검증에 통과하지 못하면 Sequelize는 데이터입력을 하지않고 에러를 반환하도록 되어있다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+   &lt;span class=&quot;c1&quot;&gt;// 정의한 User 모델로 데이터를 추가한다 &lt;/span&gt;
+   &lt;span class=&quot;nx&quot;&gt;models&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+     &lt;span class=&quot;na&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;email&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+     &lt;span class=&quot;c1&quot;&gt;// 입력에 성공함 &lt;/span&gt;
+     &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;201&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+     &lt;span class=&quot;c1&quot;&gt;// 이메일 검증 실패인 경우 &lt;/span&gt;
+     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;SequelizeValidationError&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;400&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;warn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;check the email pattern&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+     &lt;span class=&quot;c1&quot;&gt;// 그 외의 서버측 에러 경우 &lt;/span&gt;
+     &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;unique&quot;&gt;Unique&lt;/h2&gt;
+
+&lt;p&gt;컬럼에 유니크 속성을 추가할 경우 &lt;code class=&quot;highlighter-rouge&quot;&gt;unique&lt;/code&gt;키를 추가한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;DataTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;define&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;User&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;birth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;DataTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;DATEONLY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;unique&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// birth 컬럼값이 유일해야 한다 &lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;만약 두 컬럼을 조합하여 유일성을 보장해야 한다면 어떻게 할까? 불리언 값이 아니라 문자열을 설정하면 된다. 예를들어 생일(birth)과 이름(name)을 조합한 값이 유일해야 된다면 우리는 이렇게 코딩할 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;DataTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;define&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;User&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;birth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;DataTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;DATEONLY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;unique&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;userBirthAndNameUnique&#39;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 문자열로 유니크를 지정한다.&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;DataTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;STRING&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;unique&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;userBirthAndNameUnique&#39;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 문자열로 유니크를 지정한다.&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;실제 테이블 정의에는 이러한 정보를 확인할 수 없고, User 모델로 데이터를 입력하면 Sequelize 단에서 유니크 검증을 처리한다. 중복값을 입력할 경우 validate와 마찬가지로 에러를 반환한다.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 27 Jan 2016 07:27:50 +0800</pubDate>
+        <link>http://whatilearn.com/sequelize-model/</link>
+        <guid isPermaLink="true">http://whatilearn.com/sequelize-model/</guid>
+        
+        <category>sequelize-modeling</category>
+        
+        
+        <category>Sequelize</category>
+        
+      </item>
+    
+      <item>
+        <title>Sequelize 마이그레이션</title>
+        <description>&lt;p&gt;Sequelize ORM을 사용하면서 편리한 점은 마이그레이션 지원이다. 특히 운영중인 서비스의 데이터베이스를 변경할 때 편리하다. 개발 단계에서는 매번 &lt;code class=&quot;highlighter-rouge&quot;&gt;sync({force: true})&lt;/code&gt;로 데이터베이스를 갱신할 수 있겠지만 운영중인 서비스에서는 불가능하다. 그렇다고 데이터베이스 스키마를 직접 수정하고 Sequelize 모델링 코드를 변경한다는 것은 번거럽기도 할 뿐만아니라 까딱 잘못하면 돌이킬수 없는 결과를 낳을 수도 있다. 이번 포스팅에서는 Sequelize 마이그레이션 방법에 대해 알아보겠다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;마이그레이션 생성&lt;/h2&gt;
+
+&lt;p&gt;마이그레이션은 필요할 때마다 생성할 수 있다. 데이터베이스 스키마에 변경이 필요할 때마다 마이그레이션 코드를 만들어서 진행하는 것이다. 아래 명령어를 실행하면 migrations 폴더에 타임스탬프가 찍힌 파일이 하나 생성될 것이다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;sequelize migration:create 
+// 20160113211643-unnamed-migration.js
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;물론 파일명을 변경할수 있다. 마이그레이션 내용을 반영할 수 있는 적절한 이름으로 변경하되 유니크 해야한다.&lt;/p&gt;
+
+&lt;p&gt;파일은 실행한 명령어가 만든 코드 템플릿으로 구성되어 있다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;&#39;use strict&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;up&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;queryInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/*
+      Add altering commands here.
+      Return a promise to correctly handle asynchronicity.
+
+      Example:
+      return queryInterface.createTable(&#39;users&#39;, { id: Sequelize.INTEGER });
+    */&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+  &lt;span class=&quot;na&quot;&gt;down&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;queryInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/*
+      Add reverting commands here.
+      Return a promise to correctly handle asynchronicity.
+
+      Example:
+      return queryInterface.dropTable(&#39;users&#39;);
+    */&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;이 모듈은 &lt;code class=&quot;highlighter-rouge&quot;&gt;up()&lt;/code&gt;과 &lt;code class=&quot;highlighter-rouge&quot;&gt;down()&lt;/code&gt; 메소드를 노출하는데 각 각 마이그레이션과 롤백을 담당한다. &lt;code class=&quot;highlighter-rouge&quot;&gt;up()&lt;/code&gt; 함수에 새로운 컬럼을 추가하는 코드를 작성하면, &lt;code class=&quot;highlighter-rouge&quot;&gt;down()&lt;/code&gt; 함수에는 추가한 컬럼을 삭제하는 코드를 작성하는 식이다. 간단히 User 테이블에 nickname 컬럼을 추가하는 코드를 작성해 보자.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s1&quot;&gt;&#39;use strict&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;up&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;queryInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;queryInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addColumn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;User&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;nickname&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;STRING&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+  &lt;span class=&quot;na&quot;&gt;down&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;queryInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;queryInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;removeColumn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;User&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;nickname&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;마이그레이션 진행&lt;/h2&gt;
+
+&lt;p&gt;아래 명령어로 마이그레이션을 진행한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;sequelize db:migrate --env development
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--env&lt;/code&gt; 옵션으로 데이터베이스를 선택할수 있는데 로컬에서 운영(production)서버의 데이터베이스를 관리할 때 편리하다. &lt;code class=&quot;highlighter-rouge&quot;&gt;development&lt;/code&gt;는 기본 값이다. 실행하면 마이그레이션이 진행되는 메세지를 터미널 창에서 볼 수 있다.&lt;/p&gt;
+
+&lt;p&gt;마이그레이션이 완료되면 데이터베이스에는 &lt;code class=&quot;highlighter-rouge&quot;&gt;SequelizeMeta&lt;/code&gt; 테이블이 생성된다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;mysql&amp;gt; &lt;/span&gt;describe SequelizeMeta;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| name  | varchar&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;255&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; | NO   | PRI | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+1 row &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.00 sec&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;name&lt;/code&gt; 컬럼 하나만 있는 테이블이다. 마이그레이션을 수행하면 그 마이그레이션의 파일명을 이 테이블에 기록한다. 반대로 마이그래이션을 취소하면 테이블에 해당 파일명을 삭제한다.&lt;/p&gt;
+
+&lt;p&gt;마이그레이션 파일이 여러개 있더라도 신규 마이그레이션만 동작하는 이유가 이것 때문이다. 마이그레이션 명령이 실행되면 SequelizeMeta 테이블을 확인하여 이미 수행한 마이그레이션은 제외하고 신규 마이그레이션만 진행하는 것이다. 만약 마이그레이션 롤백이 안되는 등 예외 사항이 발생한다면 이 테이블에 저장된 값을 삭제/추가하면서 문제를 해결할 수 있다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;마이그레이션 취소&lt;/h2&gt;
+
+&lt;p&gt;아래 명령어로 간단히 롤백할 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;sequelize db:migrate:undo --env development
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;롤백은 한 단계씩 수행되며, 원하는만큼 실행 하면된다.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;다중 마이그레이션&lt;/h2&gt;
+
+&lt;p&gt;만약 컬럼을 여러개 추가할 때는 어떻게 해야할까?&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;up()&lt;/code&gt; 함수는 프라미스를 리턴하게 되어있는데 프라미스로 구성된 배열을 반환해도 된다. 컬럼을 여러개 추가할 것이라면 &lt;code class=&quot;highlighter-rouge&quot;&gt;addColumn()&lt;/code&gt;을 배열에 담아 리턴하면 된다. 물론 롤백할 때도 동일하게 &lt;code class=&quot;highlighter-rouge&quot;&gt;removeColumn()&lt;/code&gt;를 배열에 담아서 반환한다. (&lt;a href=&quot;https://github.com/sequelize/cli/issues/133&quot;&gt;참고&lt;/a&gt;)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;up&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;queryInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;queryInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addColumn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;User&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;name&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;STRING&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}),&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;queryInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addColumn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;User&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;nickname&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;STRING&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+  &lt;span class=&quot;na&quot;&gt;down&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;queryInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;queryInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;removeColumn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Challenges&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;name&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;queryInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;removeColumn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Challenges&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;nickname&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;물론 다른 방법도 있다. 직접 로우(raw) 쿼리를 실행할 수도 있다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;up&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;queryInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sql&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;ALTER TABLE User ADD COLUMN nickname varchar(255) NOT NULL&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;queryInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;QueryTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;RAW&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+  &lt;span class=&quot;na&quot;&gt;down&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;queryInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sql&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;ALTER TABLE User DROP COLUMN nickname&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;queryInterface&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sql&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Sequelize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;QueryTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;RAW&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 14 Jan 2016 17:21:17 +0800</pubDate>
+        <link>http://whatilearn.com/sequelize-migration/</link>
+        <guid isPermaLink="true">http://whatilearn.com/sequelize-migration/</guid>
+        
+        <category>migration</category>
+        
+        <category>sequelize</category>
+        
+        
+        <category>Sequelize</category>
+        
+      </item>
+    
+      <item>
+        <title>Sequelize로 마이그레이션 시 외래키 추가하기</title>
+        <description>&lt;p&gt;데이터베이스 ORM인 Sequelize는 마이그레이션 기능을 제공한다. 모델링을 마친 데이터베이스에 대해 변경 작업이 필요한 경우, 코드로 변경내용을 기술한 뒤 커맨드라인 명령어를 통해 마이그레이션을 진행할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;addColumn()&lt;/code&gt;은 기존 테이블에 컬럼을 추가할 경우 사용하는 메소드인데 외래키 설정은 아직 미지원 상태다. (&lt;a href=&quot;https://github.com/sequelize/sequelize/issues/966&quot;&gt;참고&lt;/a&gt;) 이를 해결하기 위한 방법 중 쿼리를 직접 작성하여 마이그레이션하는 방법이 있다. (&lt;a href=&quot;https://github.com/sequelize/sequelize/issues/2943&quot;&gt;참고&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;User, Friend 테이블을 정의했다고 하자. Friend 테이블에 User 테이블을 참조하는 UserId 컬럼을 추가할때 아래와 같이 마이그레이션 코드를 작성한다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;module.exports = {
+  up: function (queryInterface, Sequelize) {
+
+    // raw 쿼리
+    // 외래키 제한자를 설정한다.
+    var sql = &quot;ALTER TABLE `Friend`&quot; +
+        &quot;  ADD COLUMN `UserId` BIGINT(20) UNSIGNED DEFAULT NULL&quot; +
+        &quot;, ADD CONSTRAINT `fkUserIdInFriend` FOREIGN KEY (`UserId`) REFERENCES `User` (`id`) ON UPDATE CASCADE ON DELETE RESTRICT&quot;;
+
+    // 쿼리 실행 
+    return queryInterface.sequelize.query(sql, {
+      type: Sequelize.QueryTypes.RAW
+    });
+  },
+
+  down: function (queryInterface, Sequelize) {
+    var sql = &quot;ALTER TABLE `Friend`&quot; +
+        &quot;  DROP FOREIGN KEY `fkUserIdInFriend`, DROP COLUMN `UserId`&quot;;
+
+    return queryInterface.sequelize.query(sql, {
+      type: Sequelize.QueryTypes.RAW
+    });
+  }
+};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;UserId&lt;/code&gt; 컬럼을 추가하고 여기에 &lt;code class=&quot;highlighter-rouge&quot;&gt;fkUserIdInFriend&lt;/code&gt; 제한자를 추가한다.&lt;/p&gt;
+
+&lt;p&gt;아래 마이그레이션 명령어를 실행하면 외래키가 설정된 UserId 컬럼을 Friend 테이블에 추가할 수 있다.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ sequelize db:migrate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Wed, 13 Jan 2016 06:17:40 +0800</pubDate>
+        <link>http://whatilearn.com/add-fk-on-sequelize-migration/</link>
+        <guid isPermaLink="true">http://whatilearn.com/add-fk-on-sequelize-migration/</guid>
+        
+        <category>fk</category>
+        
+        <category>migration</category>
+        
+        <category>sequelize</category>
+        
+        
+        <category>Sequelize</category>
+        
+      </item>
+    
+  </channel>
+</rss>

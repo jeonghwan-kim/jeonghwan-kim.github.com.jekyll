@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Javascript Decorator Pattern</title>
+  <meta name="description" content="Ghost 소스를 보면서 데코레이터 패턴을 처음 보았다. 이전 포스트에 보면 http() 메쏘드 주석에 이것은 데코레이터 패턴이라고 되어있다.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://whatilearn.com/javascript-decorator-pattern/">
+  <link rel="alternate" type="application/rss+xml" title="What I Learn" href="http://whatilearn.com/feed.xml">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">What I Learn</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <!--<div class="trigger">-->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/about/">About</a>-->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/elastic-beanstalk/">#elastic beanstalk</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/nodejs/">#nodejs</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/npm/">#npm</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/aws/">#aws</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/s3/">#s3</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/css/">#css</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/less/">#less</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/twitter-bootstrap/">#twitter bootstrap</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/cookie/">#cookie</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/login/">#login</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/redis/">#redis</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/session/">#session</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/angular-fullstack/">#angular-fullstack</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/angularjs/">#angularjs</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/gzip/">#gzip</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/laze-load/">#laze load</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/pagging/">#pagging</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/log-io/">#log.io</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/express/">#express</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/javascript/">#javascript</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/underscorejs/">#underscorejs</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/form/">#form</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/wordpress/">#wordpress</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/php/">#php</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ssh/">#ssh</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/passport/">#passport</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/eb-cli/">#eb-cli</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/cachefactory/">#$cacheFactory</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/resource/">#$resource</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/cache/">#cache</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/settimeout/">#setTimeout()</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/browser/">#browser</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/file-upload/">#file upload</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/amp/">#&amp;</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/">#</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EB%B9%84%ED%8A%B8%EC%97%B0%EC%82%B0/">#비트연산</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/httpbackend/">#$httpBackend</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/jasmin/">#jasmin</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mock/">#Mock</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/test/">#test</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/hapi/">#hapi</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/controller/">#controller</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/joi/">#joi</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/model/">#model</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/validator/">#validator</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/good/">#good</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/good-console/">#good-console</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/good-file/">#good-file</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/logging/">#logging</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/api/">#api</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/auth/">#auth</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/hapi-auth-cookie/">#hapi-auth-cookie</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/logout/">#logout</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/grunt/">#grunt</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/code/">#code</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/lab/">#lab</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/dao/">#dao</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/node-mysql/">#node-mysql</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/scaffold/">#scaffold</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/rds-snapshot/">#rds snapshot</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/swap-urls/">#swap urls</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%84%9C%EB%B2%84-%EB%B3%80%EA%B2%BD/">#서버 변경</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mongodb/">#mongodb</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/jquery/">#jquery</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/yeopress/">#yeoPress</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/plugin/">#plugin</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/directive/">#directive</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ngform/">#ngForm</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/options/">#options</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/post/">#post</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/preflighted-request/">#preflighted request</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/put/">#put</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/templatecache/">#$templateCache</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/modal/">#modal</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/service/">#service</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/expressjs/">#expressjs</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/nginx/">#nginx</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/child-theme/">#child theme</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/custom-menu/">#custom menu</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/authentication/">#authentication</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ui-router/">#ui-router</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/apache2/">#apache2</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/reverse-proxy/">#reverse proxy</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/virtual-host/">#virtual host</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/exception/">#exception</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/stacktrace-js/">#stacktrace.js</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/express-jwt/">#express-jwt</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/jwt/">#jwt</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/oauth2-0/">#oauth2.0</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/google-material-design/">#google material design</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/materialize/">#materialize</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%9D%B4%EB%8B%88%EC%8B%9C%EC%8A%A4/">#이니시스</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%9D%B4%EB%8B%88%ED%8E%98%EC%9D%B4%EB%AA%A8%EB%B0%94%EC%9D%BC/">#이니페이모바일</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/date/">#date</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/momentjs/">#momentjs</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/hapijs/">#hapijs</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/socket-io/">#socket.io</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/web-socket/">#Web Socket</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%8B%A4%EC%8B%9C%EA%B0%84%EC%9B%B9/">#실시간웹</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mi-band/">#Mi Band</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/google/">#google</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/google-api/">#google api</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/passport-google-oauth/">#passport-google-oauth</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/custom-validator/">#custom validator</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/image-upload/">#image-upload</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/multer/">#multer</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%97%85%EB%A1%9C%EB%93%9C/">#이미지 업로드</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/gm/">#gm</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/graphicsmagick/">#GraphicsMagick</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/resizing-image/">#resizing image</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/thumb/">#thumb</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%9D%B4%EB%AF%B8%EC%A7%80-%EB%A6%AC%EC%82%AC%EC%9D%B4%EC%A7%95/">#이미지 리사이징</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/forever/">#forever</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/linux-deamon/">#linux deamon</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/linux-service/">#linux service</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/jade/">#jade</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/rest-api/">#rest api</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/grunt-open/">#grunt-open</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/oh-my-zsh/">#oh my zsh</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/terminal/">#terminal</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/zsh/">#zsh</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/postdigest/">#$$postDigest</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/angular/">#angular</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/timeout/">#timeout</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/sequelize/">#sequelize</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/atom/">#atom</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%95%84%ED%86%B0/">#아톰</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/cafe24/">#cafe24</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/sms/">#sms</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EB%AC%B8%EC%9E%90/">#문자</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EC%B9%B4%ED%8E%9824/">#카페24</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/docker/">#Docker</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/git/">#Git</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/cron/">#cron</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/linux/">#linux</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ntpdate/">#ntpdate</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ubuntu/">#ubuntu</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/agenda/">#agenda</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/node/">#node</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/imac/">#imac</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/macbook/">#macbook</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/tdm/">#tdm</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/node-mocks-http/">#node-mocks-http</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/sinon/">#sinon</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/unit-test/">#unit test</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/github/">#github</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mysql/">#mysql</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/troubleshooting/">#troubleshooting</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/notes/">#notes</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/osx/">#osx</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/slack/">#slack</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/simpletest/">#SimpleTest</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mongo/">#mongo</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/spa/">#spa</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/semver/">#semver</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/karma/">#karma</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/watch/">#watch</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/atom-plugin/">#atom-plugin</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/swagger/">#swagger</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/swagger-spec/">#swagger-spec</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/swagger-ui/">#swagger-ui</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/atom-sync/">#atom-sync</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/kakao-api/">#kakao api</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/oauth/">#oauth</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ghost/">#ghost</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/facebook/">#facebook</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/graph-api/">#graph api</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/django/">#django</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/django-admin/">#django-admin</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/python/">#python</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/gunicorn/">#gunicorn</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/pip/">#pip</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/crontab/">#crontab</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mongodump/">#mongodump</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/swagger-edit/">#swagger-edit</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/swagger-node/">#swagger-node</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/coffee/">#coffee</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/decorator/">#decorator</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/decorator-pattern/">#decorator_pattern</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/angular-directive/">#angular-directive</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/gist/">#gist</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ng-plualize/">#ng-plualize</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/ngplualize/">#ngPlualize</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/%EA%B2%B0%EC%82%B0/">#결산</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/boot2docker/">#boot2docker</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/docker-quickstart-terminal/">#docker_quickstart_terminal</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/kitermatic/">#kitermatic</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/mocha/">#mocha</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/tdd/">#tdd</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/fk/">#fk</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/migration/">#migration</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/sequelize-modeling/">#sequelize-modeling</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/lodash/">#lodash</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/morgan/">#morgan</a>-->
+          <!---->
+        <!---->
+          <!---->
+          <!--<a class="page-link" href="/tags/seed/">#seed</a>-->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+          <!---->
+        <!---->
+      <!--</div>-->
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Javascript Decorator Pattern</h1>
+    <p class="post-meta">
+      <time datetime="2015-12-13T16:20:53+08:00"
+            itemprop="datePublished">Dec 13, 2015</time>
+      <ul class="tags">
+  
+  <li class="tag"><a class="tag-link" href="/tags/coffee">coffee</a></li>
+  
+  <li class="tag"><a class="tag-link" href="/tags/decorator">decorator</a></li>
+  
+  <li class="tag"><a class="tag-link" href="/tags/decorator_pattern">decorator_pattern</a></li>
+  
+  <li class="tag"><a class="tag-link" href="/tags/ghost">ghost</a></li>
+  
+</ul>
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Ghost 소스를 보면서 데코레이터 패턴을 처음 보았다. 이전 포스트에 보면 http() 메쏘드 주석에 이것은 데코레이터 패턴이라고 되어있다.</p>
+
+<blockquote>
+  <p>Decorator for API functions which are called via an HTTP request. Takes the API method and wraps it so that it gets data from the request and returns a sensible JSON response.</p>
+</blockquote>
+
+<p>데코레이터 패턴의 정의부터 살펴보자. <a href="https://ko.wikipedia.org/wiki/%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0_%ED%8C%A8%ED%84%B4">위키</a>에 나온 설명이다.</p>
+
+<blockquote>
+  <p>상황에 따라 어떤 객체에 책임을 덧붙이는 패턴</p>
+</blockquote>
+
+<p>그래. 그래서 그게 어떻다는 건가? 코드를 보면서 좀 더 정확하게 이해해 보자.</p>
+
+<h2 id="section">클래스 상속</h2>
+
+<p>데코레이터에 앞서 자바스크립트로 클래스 사용하여 상속하는 패턴을 먼저 보자. 자바스크립트에서는 모든게 함수이듯이 클래스도 함수로 표현할 수 있다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Espresso</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">cost</span> <span class="o">=</span> <span class="mi">2500</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>대부분의 커피는 에스프레소부터 시작하니깐, Espresso 클래스를 슈퍼 클래스로 만들자. 속성은 간단히 가격(cost)만 가지고 있다. 이제 이를 부모클래스로 갖는 서브 클래스를 만들어 아메리카노(Americano)와 카페라떼(CafeLatte)를 만들어 보자.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Americano</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">Espresso</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">cost</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">Espresso</span><span class="p">()).</span><span class="nx">cost</span> <span class="o">+</span> <span class="mi">500</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">water</span> <span class="o">=</span> <span class="mi">250</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">CafeLatte</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">Americano</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">cost</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">Americano</span><span class="p">()).</span><span class="nx">cost</span> <span class="o">+</span> <span class="mi">500</span><span class="p">;</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">milk</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>아메리카노는 에스프레소에 생수 250ml를 넣고 500원 추가해서 판매한다. 카페라떼는 여기에 우유 100ml를 추가하여 500원 더 추가된 가격으로 판매한다. 각 인스턴스를 확인해 보면 알 수 있다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">new</span> <span class="nx">Espresso</span><span class="p">());</span>
+<span class="c1">// { cost: 2500 }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">new</span> <span class="nx">Americano</span><span class="p">());</span>
+<span class="c1">// { cost: 3000, water: 250 }</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">new</span> <span class="nx">CafeLatte</span><span class="p">());</span>
+<span class="c1">//{ cost: 3500, water: 250, milk: 100 }</span>
+</code></pre>
+</div>
+
+<p>만약 카푸치노를 만든다고 하면 어떻게 해야할까? 에스프레소에 물과 우유를 넣고 거품을 추가로 넣은 클래스를 만들것이다. 더 많은 커피 레시피가 있으면 그만큼 클래스를 만들어서 찍어내는 방식이다.</p>
+
+<p>그러나 실제 커피 제조하는 방법을 생각해 보자. 아메리카노를 만들때는 에스프레소에 <strong>물</strong>을 첨가한다. 카페라떼를 만들때는 에스프레소에 <strong>물</strong>과 <strong>우유</strong>를 첨가한다. 만약 에스프레소에 <strong>우유</strong>만 넣어서 커피를 만들수는 없을까? 마셔본 적은 없지만 그렇게 커피를 마시기도 한다. (<a href="https://en.wikipedia.org/wiki/List_of_coffee_drinks#Espresso_with_milk">Espresso with Milk</a>) 레시피가 늘어난만큼 클래스를 만들기 보다는, 첨가하는 재료를 추상화하여 이것을 에스프레소에 덧붙이는 방법으로 커피를 만든다면 좀더 쉽게 다양한 커피 제조가 가능할 것 같다. 다시 말하면 Espresso 클래스에 Water, Milk라는 재료의 조합으로 다양한 커피를 제조할 수 있다는 말이다.</p>
+
+<h2 id="section-1">데코레이터</h2>
+
+<p>이렇게 상황에 따라 어떠한 특성 혹은 행동을 덧붙이는 패턴을 데코레이터 패턴이라고 한다. Espresso 클래스에 데코레이터 패턴을 이용해서 커피를 만들어 보자.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Water</span> <span class="p">(</span><span class="nx">espresso</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">espresso</span><span class="p">.</span><span class="nx">cost</span> <span class="o">=</span> <span class="nx">espresso</span><span class="p">.</span><span class="nx">cost</span> <span class="o">+</span> <span class="mi">500</span><span class="p">;</span>
+  <span class="nx">espresso</span><span class="p">.</span><span class="nx">water</span> <span class="o">=</span> <span class="mi">250</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">espresso</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>에스프레소에 물을 추가하는 Water() 함수다. 에스프레소 인스턴스를 파라매터로 넘겨받아 가격을 500원 추가한다. 그리고 물을 250ml 붙는다. 마지막에는 에스프레소 객체를 넘겨주는데 이것은 함수 체이닝 때문이다. 우유를 첨가하는 Milk() 함수도 만들어 보자.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Milk</span> <span class="p">(</span><span class="nx">espresso</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">espresso</span><span class="p">.</span><span class="nx">cost</span> <span class="o">=</span> <span class="nx">espresso</span><span class="p">.</span><span class="nx">cost</span> <span class="o">+</span> <span class="mi">500</span><span class="p">;</span>
+  <span class="nx">espresso</span><span class="p">.</span><span class="nx">milk</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nx">espresso</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>역시 에스프레소 인스턴스를 받아 500원 추가하고 우유 100ml를 넣는다. 역시 함수 체이닝을 위해 받은 인스턴스를 돌려준다. 재료는 모두 준비 되었다. 커피를 제조해 보자.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">espresso</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Espresso</span><span class="p">();</span>
+<span class="c1">// { cost: 2500 }</span>
+<span class="kd">var</span> <span class="nx">americano</span> <span class="o">=</span> <span class="nx">Water</span><span class="p">(</span><span class="k">new</span> <span class="nx">Espresso</span><span class="p">());</span>
+<span class="c1">// { cost: 3000, water: 250 }</span>
+<span class="kd">var</span> <span class="nx">cafeLatte</span> <span class="o">=</span> <span class="nx">Milk</span><span class="p">(</span><span class="nx">Water</span><span class="p">(</span><span class="k">new</span> <span class="nx">Espresso</span><span class="p">()));</span>
+<span class="c1">// { cost: 3500, water: 250, milk: 100 }</span>
+</code></pre>
+</div>
+
+<p>위에서 클래스 상속으로 만들었던 에스프레소, 아메리카노, 카페라떼를 만들었다. 에스프레소에 우유를 탄 Antoccino도 만들수 있다.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">antoccino</span> <span class="o">=</span> <span class="nx">Milk</span><span class="p">(</span><span class="k">new</span> <span class="nx">Espresso</span><span class="p">());</span>
+<span class="c1">// { cost: 3000, milk: 100 }</span>
+</code></pre>
+</div>
+
+<p>데코레이터 패턴을 이용하면 상당히 유연하게 인스턴스를 생성할 수 있는 장점이 있다.</p>
+
+<h2 id="ghost---">Ghost 코드에서 데코레이터 패턴</h2>
+
+<p><a href="http://whatilearn.com/ghost-%eb%9d%bc%ec%9a%b0%ed%8c%85-%eb%a1%9c%ec%a7%81-%eb%b6%84%ec%84%9d/">이전 포스트</a>에서 잠깐 언급한 고스트(Ghost) 코드를 다시 살펴 보자. 라우트 핸들러 코드를 보면 http() 함수로 감싸고 있다. 이것이 데코레이터 패턴이라고 하는데 어떻게 그런가 확인해 보자. 코드의 주석을 참고하라.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1">// 파라매터로 받은 apiMethod 함수를 받는다.</span>
+<span class="nx">http</span> <span class="o">=</span> <span class="kd">function</span> <span class="nx">http</span><span class="p">(</span><span class="nx">apiMethod</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">return</span> <span class="kd">function</span> <span class="nx">apiHandler</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// request 개체를 통해 넘어온 요청데이터를 정규화 한다. </span>
+        <span class="c1">// body, params, query, files 를 object와 options 객체에 모아 담는다.</span>
+        <span class="kd">var</span> <span class="nx">object</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span>
+            <span class="nx">options</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">extend</span><span class="p">({},</span> <span class="nx">req</span><span class="p">.</span><span class="nx">files</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">query</span><span class="p">,</span> <span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">,</span> <span class="p">{</span>
+                <span class="na">context</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="na">user</span><span class="p">:</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">user</span> <span class="o">&amp;&amp;</span> <span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="p">?</span> <span class="nx">req</span><span class="p">.</span><span class="nx">user</span><span class="p">.</span><span class="nx">id</span> <span class="p">:</span> <span class="kc">null</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">(</span><span class="nx">object</span><span class="p">))</span> <span class="p">{</span>
+            <span class="nx">object</span> <span class="o">=</span> <span class="nx">options</span><span class="p">;</span>
+            <span class="nx">options</span> <span class="o">=</span> <span class="p">{};</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 정규화된 요청데이터를 파라메터로 넘어온 apiMethod 함수에 넘겨준다.</span>
+        <span class="k">return</span> <span class="nx">apiMethod</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span> <span class="nx">options</span><span class="p">).</span><span class="nx">tap</span><span class="p">(</span><span class="kd">function</span> <span class="nx">onSuccess</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 응답 헤더를 설정한다.</span>
+            <span class="k">return</span> <span class="nx">addHeaders</span><span class="p">(</span><span class="nx">apiMethod</span><span class="p">,</span> <span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="p">(</span><span class="nx">response</span> <span class="o">||</span> <span class="p">{}));</span>
+        <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 응답 바디를 설정한다.</span>
+            <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">(</span><span class="nx">response</span> <span class="o">||</span> <span class="p">{});</span>
+        <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span> <span class="nx">onAPIError</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// 에러 처리</span>
+            <span class="nx">next</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">};</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<p>http() 데코레이터는 (1) apiMethod라는 함수를 대상으로 (2) 어떤 행동을 추가한다. 요청 데이터를 정규화하여 파라메터로 넘겨주는데 이는 apiMethod 함수에서 요청데이터 사용할 때 편리하도록 하기 위함이다. 그리고 응답에 대한 해더처리를 하고 json() 함수로 바디를 구성하여 응답한다. 만약 에러가 발생한 경우는 다음 단계로 미룬다.</p>
+
+<p>데코레이터 정의에 따라 커피 예제와 고스트 예제를 비교하면 좀더 명확할 것 같다.</p>
+
+<ul>
+  <li>정의: 상황에 따라 어떤 객체에 책임을 덧붙이는 패턴</li>
+  <li>커피 예제: 상황에 따라 coffee 객체에 책임(가격, 우유, 물)을 덧붙이는 패턴</li>
+  <li>고스트 예제: 상황에 따라 apiMethod 함수에 책임(요청 데이터 정규화, 응답 헤더 및 바다 설정, 에러 넘김)을 덧붙이는 패턴</li>
+</ul>
+
+<h2 id="section-2">참고</h2>
+
+<ul>
+  <li><a href="http://addyosmani.com/blog/decorator-pattern/">http://addyosmani.com/blog/decorator-pattern/</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">What I Learn</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>What I Learn</li>
+          <li><a href="mailto:ej88ej@gmail.com">ej88ej@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/jeonghwan-kim"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">jeonghwan-kim</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/JeonghwanKim4"><span class="icon icon--twitter"><svg viewBox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+</span><span class="username">JeonghwanKim4</span></a>
+
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>#web #backend #angularjs #nodejs #fullstack</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
